@@ -44,46 +44,46 @@ public class Ingresos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ComboTipo.setBackground(new java.awt.Color(204, 0, 0));
-        ComboTipo.setForeground(new java.awt.Color(255, 255, 255));
         ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verde", "Amarillo", "Rojo" }));
         getContentPane().add(ComboTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
 
+        lblTipo.setForeground(new java.awt.Color(255, 255, 255));
         lblTipo.setText("Tipo:");
         getContentPane().add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         lblPadecimiento.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblPadecimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblPadecimiento.setText("Padecimiento:");
         getContentPane().add(lblPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
-        ComboPadecimiento.setBackground(new java.awt.Color(204, 0, 0));
-        ComboPadecimiento.setForeground(new java.awt.Color(255, 255, 255));
         ComboPadecimiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(ComboPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingresos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre completo:");
         getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
         getContentPane().add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 280, 30));
 
+        lblFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblFecha.setText("Fecha de Nacimiento:");
         getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
+        lblDetalle.setForeground(new java.awt.Color(255, 255, 255));
         lblDetalle.setText("Detalles del padecimiento:");
         getContentPane().add(lblDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
         getContentPane().add(textDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 170, 30));
         getContentPane().add(textFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 240, 30));
 
-        btnAgregar.setBackground(new java.awt.Color(204, 0, 0));
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar Paciente");
         getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
