@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Interfaz;
+import Interfaz.Ingresos;
 
 /**
  *
@@ -34,6 +35,7 @@ public class Inicio extends javax.swing.JFrame {
         btnEmergencias = new javax.swing.JButton();
         btnAdministrador = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -42,31 +44,49 @@ public class Inicio extends javax.swing.JFrame {
         btnIngresos.setBackground(new java.awt.Color(204, 0, 0));
         btnIngresos.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresos.setText("Ingresos");
+        btnIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresosActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
 
         btnEgresos.setBackground(new java.awt.Color(204, 0, 0));
+        btnEgresos.setForeground(new java.awt.Color(255, 255, 255));
         btnEgresos.setText("Egresos");
         getContentPane().add(btnEgresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
         btnUrgencias.setBackground(new java.awt.Color(204, 0, 0));
+        btnUrgencias.setForeground(new java.awt.Color(255, 255, 255));
         btnUrgencias.setText("Urgencias");
         getContentPane().add(btnUrgencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
 
         btnEmergencias.setBackground(new java.awt.Color(204, 0, 0));
+        btnEmergencias.setForeground(new java.awt.Color(255, 255, 255));
         btnEmergencias.setText("Emergencias");
         getContentPane().add(btnEmergencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, -1));
 
         btnAdministrador.setBackground(new java.awt.Color(204, 0, 0));
+        btnAdministrador.setForeground(new java.awt.Color(255, 255, 255));
         btnAdministrador.setText("Administrador");
         getContentPane().add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
 
         lblFondo.setBackground(new java.awt.Color(255, 255, 255));
         lblFondo.setForeground(new java.awt.Color(255, 255, 255));
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 340, 270));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 360, 280));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
+        Ingresos ingreso = new Ingresos();
+        ingreso.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnIngresosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,6 +99,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnEmergencias;
     private javax.swing.JButton btnIngresos;
     private javax.swing.JButton btnUrgencias;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFondo;
     // End of variables declaration//GEN-END:variables
 }
