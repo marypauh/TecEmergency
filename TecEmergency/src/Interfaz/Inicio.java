@@ -44,9 +44,9 @@ public class Inicio extends javax.swing.JFrame {
         btnIngresos.setBackground(new java.awt.Color(204, 0, 0));
         btnIngresos.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresos.setText("Ingresos");
-        btnIngresos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresosActionPerformed(evt);
+        btnIngresos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresosMouseClicked(evt);
             }
         });
         getContentPane().add(btnIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
@@ -74,19 +74,19 @@ public class Inicio extends javax.swing.JFrame {
         lblFondo.setBackground(new java.awt.Color(255, 255, 255));
         lblFondo.setForeground(new java.awt.Color(255, 255, 255));
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 360, 280));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 360, 280));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 470));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
-        Ingresos ingreso = new Ingresos();
-        ingreso.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnIngresosActionPerformed
+    private void btnIngresosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosMouseClicked
+       Ingresos ingreso = new Ingresos();
+       ingreso.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_btnIngresosMouseClicked
 
     /**
      * @param args the command line arguments

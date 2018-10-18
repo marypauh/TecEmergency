@@ -5,6 +5,14 @@
  */
 package Interfaz;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.net.HttpURLConnection;
+
 /**
  *
  * @author marip
@@ -33,31 +41,33 @@ public class Ingresos extends javax.swing.JFrame {
         ComboPadecimiento = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        textNombre = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         lblFecha = new javax.swing.JLabel();
         lblDetalle = new javax.swing.JLabel();
-        textDetalle = new javax.swing.JTextField();
-        textFecha = new javax.swing.JTextField();
+        txtDetalle = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
+        lblTelefono = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verde", "Amarillo", "Rojo" }));
-        getContentPane().add(ComboTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
+        getContentPane().add(ComboTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
 
         lblTipo.setForeground(new java.awt.Color(255, 255, 255));
         lblTipo.setText("Tipo:");
-        getContentPane().add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        getContentPane().add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         lblPadecimiento.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblPadecimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblPadecimiento.setText("Padecimiento:");
-        getContentPane().add(lblPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        getContentPane().add(lblPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         ComboPadecimiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ComboPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
+        getContentPane().add(ComboPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,7 +77,7 @@ public class Ingresos extends javax.swing.JFrame {
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre completo:");
         getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-        getContentPane().add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 280, 30));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 280, 30));
 
         lblFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblFecha.setText("Fecha de Nacimiento:");
@@ -75,66 +85,90 @@ public class Ingresos extends javax.swing.JFrame {
 
         lblDetalle.setForeground(new java.awt.Color(255, 255, 255));
         lblDetalle.setText("Detalles del padecimiento:");
-        getContentPane().add(lblDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
-        getContentPane().add(textDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 170, 30));
-        getContentPane().add(textFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 240, 30));
+        getContentPane().add(lblDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+        getContentPane().add(txtDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 170, 30));
+        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 240, 30));
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar Paciente");
-        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, -1, -1));
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        lblTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        lblTelefono.setText("Teléfono:");
+        getContentPane().add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 30));
+
+        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 450));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 530, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public String sendSMS() {
+		try {
+			// Construct data
+			String apiKey = "apikey=" + "D/sVln1pkC8-CwHLYHDD9JzbjHZsm2M17PPZsnfNst";
+			String message = "&message=" + "Te veo bb";
+			String sender = "&sender=" + "Stranger";
+			String numbers = "&numbers=" + this.txtTelefono.getText();
+			
+			// Send data
+			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+			String data = apiKey + numbers + message + sender;
+			conn.setDoOutput(true);
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+			conn.getOutputStream().write(data.getBytes("UTF-8"));
+			final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			final StringBuffer stringBuffer = new StringBuffer();
+			String line;
+			while ((line = rd.readLine()) != null) {
+				stringBuffer.append(line);
+			}
+			rd.close();
+			
+			return stringBuffer.toString();
+		} catch (Exception e) {
+			System.out.println("Error SMS "+e);
+			return "Error "+e;
+		
+	}
+}
+    
+    
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       sendSMS();
+       String nombre, fecha, telefono, detalle, padecimiento, tipo;
+       nombre = txtNombre.getText();
+       fecha = txtFecha.getText();
+       telefono = txtTelefono.getText();
+       detalle = txtDetalle.getText();
+       padecimiento = ComboPadecimiento.toString();
+       tipo = ComboTipo.toString();
+       
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ingresos().setVisible(true);
-            }
-        });
-    }
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboPadecimiento;
@@ -146,9 +180,11 @@ public class Ingresos extends javax.swing.JFrame {
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPadecimiento;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTipo;
-    private javax.swing.JTextField textDetalle;
-    private javax.swing.JTextField textFecha;
-    private javax.swing.JTextField textNombre;
+    private javax.swing.JTextField txtDetalle;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
