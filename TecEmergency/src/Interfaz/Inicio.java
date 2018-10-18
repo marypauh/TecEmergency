@@ -5,6 +5,7 @@
  */
 package Interfaz;
 import Interfaz.Ingresos;
+import Interfaz.Urgencias;
 
 /**
  *
@@ -59,6 +60,11 @@ public class Inicio extends javax.swing.JFrame {
         btnUrgencias.setBackground(new java.awt.Color(204, 0, 0));
         btnUrgencias.setForeground(new java.awt.Color(255, 255, 255));
         btnUrgencias.setText("Urgencias");
+        btnUrgencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUrgenciasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUrgencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
 
         btnEmergencias.setBackground(new java.awt.Color(204, 0, 0));
@@ -86,6 +92,11 @@ public class Inicio extends javax.swing.JFrame {
        Ingresos ingreso = new Ingresos();
        ingreso.setVisible(true);
     }//GEN-LAST:event_btnIngresosMouseClicked
+
+    private void btnUrgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUrgenciasActionPerformed
+        Urgencias urgencia = new Urgencias();
+        urgencia.setVisible(true);
+    }//GEN-LAST:event_btnUrgenciasActionPerformed
 
     /**
      * @param args the command line arguments
