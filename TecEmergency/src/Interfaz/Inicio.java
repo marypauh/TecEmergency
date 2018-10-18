@@ -85,7 +85,6 @@ public class Inicio extends javax.swing.JFrame {
     private void btnIngresosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosMouseClicked
        Ingresos ingreso = new Ingresos();
        ingreso.setVisible(true);
-       this.setVisible(false);
     }//GEN-LAST:event_btnIngresosMouseClicked
 
     /**
