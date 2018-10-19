@@ -155,7 +155,7 @@ public class Ingresos extends javax.swing.JFrame {
     
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       sendSMS();
+       //sendSMS();
        String nombre, fecha, telefono, detalle, padecimiento, tipo;
        nombre = txtNombre.getText();
        fecha = txtFecha.getText();
