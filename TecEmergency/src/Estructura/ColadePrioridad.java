@@ -1,9 +1,9 @@
 package Estructura;
 
-public class ColadePrioridad<T> {
+public class ColadePrioridad<Pacientes> {
 
-    private Node<T> front;
-    private Node<T> rear;
+    private Node<Pacientes> front;
+    private Node<Pacientes> rear;
     private int size;
 
     public ColadePrioridad(){
@@ -11,12 +11,12 @@ public class ColadePrioridad<T> {
         this.rear = this.front;
         this.size = 0;
     }
-    public void enqueue(T element){
-        this.rear.setNext(new Node<>(element, null));
+    public void enqueue(Pacientes paciente){
+        this.rear.setNext(new Node<>(paciente, null));
         this.rear = rear.getNext();
         this.size++;
     }
-    public T dequeue(){
+    /*public T dequeue(){
         if(this.size == 0){
             System.out.println("Queue is empty");
             return null;
@@ -30,7 +30,7 @@ public class ColadePrioridad<T> {
         this.size--;
         return temp;
     }
-
+                     
     public Object first(){
         if(this.size == 0){
             System.out.println("Queue is empty");
@@ -38,6 +38,7 @@ public class ColadePrioridad<T> {
         }
         return this.front.getNext().getElement();
     }
+    */
     
     public int size(){
         return this.size;
@@ -51,7 +52,7 @@ public class ColadePrioridad<T> {
 
     public String toString(){
         String result = "";
-        Node<T> tFront = this.front;
+        Node<Pacientes> tFront = this.front;
         int tSize = this.size;
         while(tSize != 0){
             result+= tFront.getNext().getElement();
