@@ -50,6 +50,11 @@ public class Inicio extends javax.swing.JFrame {
                 btnIngresosMouseClicked(evt);
             }
         });
+        btnIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresosActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
 
         btnEgresos.setBackground(new java.awt.Color(204, 0, 0));
@@ -97,6 +102,10 @@ public class Inicio extends javax.swing.JFrame {
         Urgencias urgencia = new Urgencias();
         urgencia.setVisible(true);
     }//GEN-LAST:event_btnUrgenciasActionPerformed
+
+    private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresosActionPerformed
 
     /**
      * @param args the command line arguments

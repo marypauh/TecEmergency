@@ -6,6 +6,7 @@
 package Main;
 
 import Interfaz.Inicio;
+import Estructura.Heap;
 
 /**
  *
@@ -20,10 +21,35 @@ public class Main {
          */
         Inicio principal = new Inicio();
         principal.setVisible(true);
+        
+        //Prueba heap
+        Heap prueba = new Heap();
+        prueba.insertarHeap(2);
+        prueba.insertarHeap(5);
+        prueba.insertarHeap(1);
+        prueba.insertarHeap(3);
+        prueba.insertarHeap(1);
+        prueba.insertarHeap(2);
+        
+        prueba.print();
+        prueba.print();
+        System.out.println("Siguiente" + prueba.getSiguiente());
+        prueba.print();
+        System.out.println("Siguiente" + prueba.getSiguiente());
+        prueba.print();
+        System.out.println("Siguiente" + prueba.getSiguiente());
+        prueba.print();
+        System.out.println("Siguiente" + prueba.getSiguiente());
+        prueba.print();
+        System.out.println("Siguiente" + prueba.getSiguiente());
+        prueba.print();
+        System.out.println("Siguiente" + prueba.getSiguiente());
+        prueba.print();
+        System.out.println("Siguiente" + prueba.getSiguiente());
+        prueba.print();
      
 
         
-     
     }
     
 }
