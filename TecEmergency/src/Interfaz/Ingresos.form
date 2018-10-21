@@ -28,10 +28,11 @@
     <Component class="javax.swing.JComboBox" name="ComboTipo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Verde"/>
-            <StringItem index="1" value="Amarillo"/>
-            <StringItem index="2" value="Rojo"/>
+          <StringArray count="4">
+            <StringItem index="0" value="VERDE"/>
+            <StringItem index="1" value="AMARILLO"/>
+            <StringItem index="2" value="ROJO"/>
+            <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -76,11 +77,13 @@
     <Component class="javax.swing.JComboBox" name="ComboPadecimiento">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="6">
+            <StringItem index="0" value="INFARTO"/>
+            <StringItem index="1" value="PERDIDADESANGREPORHERIDA"/>
+            <StringItem index="2" value="PARTO"/>
+            <StringItem index="3" value="DOLORESTOMACAL"/>
+            <StringItem index="4" value="QUEBRADURA"/>
+            <StringItem index="5" value="OTRO"/>
           </StringArray>
         </Property>
       </Properties>

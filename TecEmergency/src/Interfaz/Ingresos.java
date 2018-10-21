@@ -12,6 +12,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.net.HttpURLConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import modelo.enums.CategoriasColor;
+import modelo.enums.CategoriasPadecimientos;
+import java.util.Date;
 
 /**
  *
@@ -19,6 +24,8 @@ import java.net.HttpURLConnection;
  */
 public class Ingresos extends javax.swing.JFrame {
 
+    Date hora = new Date();
+    
     /**
      * Creates new form Ingresos
      */
@@ -55,7 +62,7 @@ public class Ingresos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verde", "Amarillo", "Rojo" }));
+        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VERDE", "AMARILLO", "ROJO", " " }));
         getContentPane().add(ComboTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
 
         lblTipo.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,7 +74,7 @@ public class Ingresos extends javax.swing.JFrame {
         lblPadecimiento.setText("Padecimiento:");
         getContentPane().add(lblPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        ComboPadecimiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboPadecimiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INFARTO", "PERDIDADESANGREPORHERIDA", "PARTO", "DOLORESTOMACAL", "QUEBRADURA", "OTRO" }));
         getContentPane().add(ComboPadecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -155,14 +162,22 @@ public class Ingresos extends javax.swing.JFrame {
     
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       //sendSMS();
-       String nombre, fecha, telefono, detalle, padecimiento, tipo;
+     //sendSMS();
+       String nombre, fecha, telefono, detalle;
+       CategoriasColor tipo;
+       CategoriasPadecimientos padecimiento;
+       Date horaIngreso;
        nombre = txtNombre.getText();
        fecha = txtFecha.getText();
        telefono = txtTelefono.getText();
        detalle = txtDetalle.getText();
-       padecimiento = ComboPadecimiento.toString();
-       tipo = ComboTipo.toString();
+       padecimiento = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem().toString());
+       tipo = CategoriasColor.valueOf(ComboTipo.getSelectedItem().toString());
+       
+        DateFormat Formato = new SimpleDateFormat("HH:mm:ss");
+      ///  horaIngreso = Formato(hora);
+        //System.out.println("Hora: "+Formato.format(hora));
+    
        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
