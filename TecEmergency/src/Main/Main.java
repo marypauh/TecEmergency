@@ -6,7 +6,7 @@
 package Main;
 
 import Estructura.ColadePrioridad;
-import Interfaz.Inicio;
+import Interfaz.Principal;
 import Estructura.Heap;
 import Estructura.Pacientes;
 
@@ -21,7 +21,7 @@ public class Main {
          /**
          * SE CREA LA INSTANCIA PARA LLAMAR LA VENTANA PRINCIPAL
          */
-        Inicio principal = new Inicio();
+        Principal principal = new Principal();
         principal.setVisible(true);
         
         ColadePrioridad cola = new ColadePrioridad();
