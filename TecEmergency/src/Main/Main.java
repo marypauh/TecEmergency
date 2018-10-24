@@ -6,6 +6,7 @@
 package Main;
 
 import Estructura.ColadePrioridad;
+import Estructura.FilaPacientes;
 import Interfaz.Principal;
 import Estructura.Heap;
 import Estructura.Pacientes;
@@ -21,22 +22,28 @@ public class Main {
          /**
          * SE CREA LA INSTANCIA PARA LLAMAR LA VENTANA PRINCIPAL
          */
-        Principal principal = new Principal();
-        principal.setVisible(true);
+                
+        Pacientes paciente = new Pacientes (0,"4d","verde","Infarto");
+        Pacientes paciente2 = new Pacientes(0,"4f","rojo","Infarto");
         
-        ColadePrioridad cola = new ColadePrioridad();
-        Pacientes paciente = new Pacientes(3,"4d","Rojo","Infarto");
-        cola.enqueue(paciente);
-        Pacientes paciente2 = new Pacientes(2,"4f","Verde","Infarto");
-        cola.enqueue(paciente2);
+        FilaPacientes filaHeap = new FilaPacientes("H");
+        FilaPacientes filaCola = new FilaPacientes("C");
         
-        ColadePrioridad.bubbleSort(cola);
+        filaCola.insertPaciente(paciente);
+        filaCola.insertPaciente(paciente2);
         
+        filaHeap.insertPaciente(paciente);
+        filaHeap.insertPaciente(paciente2);
         
-        System.out.println(cola);
+        System.out.println(filaHeap.toString());
+        System.out.println(filaHeap.nextPaciente());
+        System.out.println(filaHeap.nextPaciente());
         
+        System.out.println(filaCola.toString());
+        System.out.println(filaCola.nextPaciente());
+        System.out.println(filaCola.nextPaciente());
+    }
+    
         
         
     }
-    
-}

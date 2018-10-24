@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/raquelrojas/Documents/GitHub/TecEmergency/TecEmergency/src/Estructura/Heap.java</file>
-            <file>file:/Users/raquelrojas/Documents/GitHub/TecEmergency/TecEmergency/src/Estructura/Node.java</file>
-            <file>file:/Users/raquelrojas/Documents/GitHub/TecEmergency/TecEmergency/src/Estructura/ColadePrioridad.java</file>
             <file>file:/Users/raquelrojas/Documents/GitHub/TecEmergency/TecEmergency/src/Main/Main.java</file>
-=======
-            <file>file:/C:/Users/kevca/Documents/GitHub/TecEmergency/TecEmergency/src/Estructura/ColadePrioridad.java</file>
->>>>>>> 028e5e54aaffce18a3ce473a4e905a93d694e2f7
+            <file>file:/Users/raquelrojas/Documents/GitHub/TecEmergency/TecEmergency/src/Interfaz/Principal.java</file>
+            <file>file:/Users/raquelrojas/Documents/GitHub/TecEmergency/TecEmergency/src/Interfaz/Inicio.java</file>
+            <file>file:/Users/raquelrojas/Documents/GitHub/TecEmergency/TecEmergency/src/Estructura/FilaPacientes.java</file>
         </group>
     </open-files>
 </project-private>
