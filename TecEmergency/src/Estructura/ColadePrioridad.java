@@ -1,6 +1,6 @@
 package Estructura;
 
-public class ColadePrioridad<Pacientes> {
+public class ColadePrioridad<X>{
 
     private Node<Pacientes> front;
     private Node<Pacientes> rear;
@@ -60,19 +60,19 @@ public class ColadePrioridad<Pacientes> {
         }
         return result;
     }
-    public  ColadePrioridad bubbleSort(ColadePrioridad cola){
-       Pacientes[] arr = (Pacientes[]) new Object[cola.size];
-        int j = 0;
-        while(cola.size>0){
-              arr[j] = (Pacientes)cola.dequeue();
+    public static ColadePrioridad bubbleSort(ColadePrioridad cola) {
+          Pacientes[] arr = new Pacientes[cola.size];
+          int j = 0;
+          while(cola.size>0){
+              arr[j] = cola.dequeue();
               j++;
-        }
-        boolean swapped = true;
-        Pacientes tmp;
+          }
+          boolean swapped = true;
+          Pacientes tmp;
           while (swapped) {
                 swapped = false;
                 for (int i = 0; i < arr.length - 1; i++) {
-                      if (arr[i] > arr[i + 1]) {
+                      if (arr[i].prioridad > arr[i + 1].prioridad) {
                             tmp = arr[i];
                             arr[i] = arr[i + 1];
                             arr[i + 1] = tmp;
@@ -85,5 +85,4 @@ public class ColadePrioridad<Pacientes> {
           }
         return cola;
     }
-    
 }
