@@ -60,11 +60,11 @@ public class ColadePrioridad<Pacientes> {
         }
         return result;
     }
-    /*public  ColadePrioridad bubbleSort(ColadePrioridad cola){
-       Pacientes[] arr = new Pacientes[cola.size];
+    public  ColadePrioridad bubbleSort(ColadePrioridad cola){
+       Pacientes[] arr = (Pacientes[]) new Object[cola.size];
         int j = 0;
         while(cola.size>0){
-              arr[j] = cola.dequeue();
+              arr[j] = (Pacientes)cola.dequeue();
               j++;
         }
         boolean swapped = true;
@@ -72,7 +72,7 @@ public class ColadePrioridad<Pacientes> {
           while (swapped) {
                 swapped = false;
                 for (int i = 0; i < arr.length - 1; i++) {
-                      if (arr[i].prioridad > arr[i + 1].prioridad) {
+                      if (arr[i] > arr[i + 1]) {
                             tmp = arr[i];
                             arr[i] = arr[i + 1];
                             arr[i + 1] = tmp;
@@ -85,5 +85,5 @@ public class ColadePrioridad<Pacientes> {
           }
         return cola;
     }
-    */
+    
 }
