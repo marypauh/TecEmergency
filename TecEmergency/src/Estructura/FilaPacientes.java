@@ -16,7 +16,7 @@ public class FilaPacientes {
     
     public FilaPacientes(String tipoDeFila){
         this.tipoDeFila = tipoDeFila;
-        if ("H".equals(tipoDeFila)){
+        if ("HEAP".equals(tipoDeFila)){
             heap = new Heap();
         }else{
             cola = new ColadePrioridad();
@@ -24,7 +24,7 @@ public class FilaPacientes {
     }
     
     public void insertPaciente(Pacientes paciente){
-        if ("H".equals(tipoDeFila)){
+        if ("HEAP".equals(tipoDeFila)){
             heap.insertarHeap(paciente);//si es null la fila se acaba
         }else{
             cola.enqueue(paciente);
@@ -33,7 +33,7 @@ public class FilaPacientes {
     }
     
     public Pacientes nextPaciente(){
-        if ("H".equals(tipoDeFila)){
+        if ("HEAP".equals(tipoDeFila)){
             return heap.getSiguiente();
         }else{
             return cola.dequeue();//revisar si retorna el paceinte correcto
@@ -42,7 +42,7 @@ public class FilaPacientes {
     
     @Override
     public String toString(){
-        if ("H".equals(tipoDeFila)){
+        if ("HEAP".equals(tipoDeFila)){
             return heap.toString();
         }else{
             return cola.toString();
