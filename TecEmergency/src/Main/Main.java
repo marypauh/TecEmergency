@@ -5,8 +5,10 @@
  */
 package Main;
 
+import Estructura.ColadePrioridad;
 import Interfaz.Inicio;
 import Estructura.Heap;
+import Estructura.Pacientes;
 
 /**
  *
@@ -22,33 +24,18 @@ public class Main {
         Inicio principal = new Inicio();
         principal.setVisible(true);
         
-        //Prueba heap
-        Heap prueba = new Heap();
-        prueba.insertarHeap(2);
-        prueba.insertarHeap(5);
-        prueba.insertarHeap(1);
-        prueba.insertarHeap(3);
-        prueba.insertarHeap(1);
-        prueba.insertarHeap(2);
+        ColadePrioridad cola = new ColadePrioridad();
+        Pacientes paciente = new Pacientes(3,"4d","Rojo","Infarto");
+        cola.enqueue(paciente);
+        Pacientes paciente2 = new Pacientes(2,"4f","Verde","Infarto");
+        cola.enqueue(paciente2);
         
-        prueba.print();
-        prueba.print();
-        System.out.println("Siguiente" + prueba.getSiguiente());
-        prueba.print();
-        System.out.println("Siguiente" + prueba.getSiguiente());
-        prueba.print();
-        System.out.println("Siguiente" + prueba.getSiguiente());
-        prueba.print();
-        System.out.println("Siguiente" + prueba.getSiguiente());
-        prueba.print();
-        System.out.println("Siguiente" + prueba.getSiguiente());
-        prueba.print();
-        System.out.println("Siguiente" + prueba.getSiguiente());
-        prueba.print();
-        System.out.println("Siguiente" + prueba.getSiguiente());
-        prueba.print();
-     
-
+        ColadePrioridad.bubbleSort(cola);
+        
+        
+        System.out.println(cola);
+        
+        
         
     }
     

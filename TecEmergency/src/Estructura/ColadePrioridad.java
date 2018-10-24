@@ -49,12 +49,13 @@ public class ColadePrioridad<X>{
         this.size = 0;
     }
 
+    @Override
     public String toString(){
         String result = "";
         Node<Pacientes> tFront = this.front;
         int tSize = this.size;
         while(tSize != 0){
-            result+= tFront.getNext().getElement();
+            result+= tFront.getNext().getElement().toString();
             tFront = tFront.getNext();
             tSize--;
         }
