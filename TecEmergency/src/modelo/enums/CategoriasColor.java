@@ -11,8 +11,7 @@ package modelo.enums;
  */
 public enum CategoriasColor {
       VERDE("V","Verde"),
-     AMARILLO("A","Amarillo"),
-     ROJO("R","Rojo");
+     AMARILLO("A","Amarillo");
 
     public static CategoriasColor valueOf(Object valueAt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

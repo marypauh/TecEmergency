@@ -62,7 +62,7 @@ public class Ingresos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VERDE", "AMARILLO", "ROJO", " " }));
+        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VERDE", "AMARILLO" }));
         getContentPane().add(ComboTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
 
         lblTipo.setForeground(new java.awt.Color(255, 255, 255));
