@@ -1,16 +1,23 @@
 package Estructura;
 
+import java.text.DateFormat;
+
 public class Pacientes {
     int prioridad;
     String ficha;
     String color;
     String padecimiento;
+    DateFormat horaEntrada;
+    DateFormat horaSalida;
     
-    public Pacientes(int prioridad,String ficha,String color, String padecimiento){
+    
+    public Pacientes(String ficha,String color, String padecimiento, DateFormat horaEntrada,  DateFormat horaSalida){
         this.prioridad = setPrioridad(color, padecimiento);
         this.ficha = ficha;
         this.color = color;
         this.padecimiento = padecimiento;
+        this.horaEntrada = horaEntrada;
+        this.horaSalida = horaSalida;
     }
     public String getColor() {
         return color;
@@ -35,6 +42,18 @@ public class Pacientes {
     }
     public void setFicha(String ficha) {
         this.ficha = ficha;
+    }
+     public DateFormat getHoraEntrada() {
+        return horaEntrada;
+    }
+    public void setHoraEntrada(DateFormat horaEntrada) {
+        this.horaEntrada = horaEntrada;
+    }
+    public DateFormat getHoraSalida() {
+        return horaSalida;
+    }
+    public void setHoraSalida(DateFormat horaSalida) {
+        this.horaSalida = horaSalida;
     }
 
     @Override

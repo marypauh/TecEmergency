@@ -161,7 +161,7 @@ public class Principal extends javax.swing.JFrame {
         FilaPacientes filaRoja = new FilaPacientes(comboEgresos.getSelectedItem().toString());
         FilaPacientes filaAmarilla = new FilaPacientes(comboAmarillo.getSelectedItem().toString());
         FilaPacientes filaVerde = new FilaPacientes(comboVerde.getSelectedItem().toString());
-       FilaPacientes filaEgresos = new FilaPacientes(comboEgresos.getSelectedItem().toString());
+        FilaPacientes filaEgresos = new FilaPacientes(comboEgresos.getSelectedItem().toString());
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**

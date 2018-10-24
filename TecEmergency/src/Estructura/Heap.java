@@ -18,7 +18,7 @@ public class Heap {
     Pacientes heap[] = new Pacientes[maxSize];//Declara el heap como arreglo de enteros
     
     public Heap(){
-        Pacientes pacientenull = new Pacientes (0,"RI0","rojo","infarto");
+        Pacientes pacientenull = new Pacientes ("RI0","rojo","infarto",null,null);
         heap[0] = pacientenull; //se asigna un negativo por que 0 es un caso de prioridad.
     }
     public void insertarHeap(Pacientes pacienteinsert){

@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Estructura.Pacientes;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -163,20 +164,24 @@ public class Ingresos extends javax.swing.JFrame {
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
      //sendSMS();
-       String nombre, fecha, telefono, detalle;
-       CategoriasColor tipo;
-       CategoriasPadecimientos padecimiento;
-       Date horaIngreso;
+       String nombre, fecha, telefono, detalle, color,padecimiento;
+       Date horaEntrada;
+       String ficha;
        nombre = txtNombre.getText();
        fecha = txtFecha.getText();
        telefono = txtTelefono.getText();
        detalle = txtDetalle.getText();
-       padecimiento = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem().toString());
-       tipo = CategoriasColor.valueOf(ComboTipo.getSelectedItem().toString());
+       ficha = CategoriasPadecimientos.valueOf(ComboTipo.getSelectedIndex()).toString();
+       padecimiento = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem()).toString();
+       color = CategoriasColor.valueOf(ComboTipo.getSelectedItem()).toString();
        
         DateFormat Formato = new SimpleDateFormat("HH:mm:ss");
-      ///  horaIngreso = Formato(hora);
+        
         //System.out.println("Hora: "+Formato.format(hora));
+        //Pacientes paciente = new Pacientes("FICHA",color, padecimiento,horaEntrada, null);
+        //if (("V").equals(tipo)){
+            //fila
+        //}
     
        
     }//GEN-LAST:event_btnAgregarActionPerformed
