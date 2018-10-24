@@ -15,24 +15,25 @@ public class Heap {
     //La posición 0 del heap no se utiliza para mayor facilidad y usar la posicion como indice
     int currentHeapSize;//cantidad de pacientes
     final int maxSize = 101;//tamaño maximo que puede tener el heap
-    int heap[] = new int[maxSize];//Declara el heap como arreglo de enteros
+    Pacientes heap[] = new Pacientes[maxSize];//Declara el heap como arreglo de enteros
     
     public Heap(){
-        heap[0] = -1; //se asigna un negativo por que 0 es un caso de prioridad.
+        Pacientes pacientenull = new Pacientes (0,"RI0","rojo","infarto");
+        heap[0] = pacientenull; //se asigna un negativo por que 0 es un caso de prioridad.
     }
-    public void insertarHeap(int nuevoNum){
+    public void insertarHeap(Pacientes pacienteinsert){
         int espacioLibre = ++currentHeapSize;
-        while (heap[(espacioLibre/2)] > nuevoNum){
+        while (heap[(espacioLibre/2)].prioridad > pacienteinsert.prioridad){
         heap[espacioLibre]= heap[(espacioLibre/2)];
         espacioLibre = (espacioLibre/2);
         } //compara con el padre
-        heap[espacioLibre] = nuevoNum;
+        heap[espacioLibre] = pacienteinsert;
         
     }
-    public void print(){
-    System.out.println(Arrays.toString(heap));
-    System.out.println(currentHeapSize);}
-    
+    @Override
+    public String toString(){
+        return Arrays.toString(heap) + " Tam: "+ currentHeapSize;
+    }
     private boolean isEmpty(){
         if (currentHeapSize == 0){
            return true;
@@ -40,30 +41,31 @@ public class Heap {
             return false;
         }
     }
-    public int getSiguiente(){
+    public Pacientes getSiguiente(){
         if (this.isEmpty()){
         System.out.println("No hay más pacientes en heap");//esto debe mostrarse en un show dialog
-        return 0;
+        return null;
         }
-        int min=heap[1];
+        int min=heap[1].prioridad;
+        Pacientes paciente = heap[1];
         heap[1]=heap[currentHeapSize];
         currentHeapSize--;
         hundir (1);
-        return min;
+        return paciente;
         }
     
     private void hundir (int espacioLibre) {
         int hijo;
         boolean coloca=true;
-        int tmp=heap[espacioLibre];
+        Pacientes tmp=heap[espacioLibre];
         while (espacioLibre*2<= currentHeapSize && coloca) {
             hijo=espacioLibre*2;
-            if ((hijo!=currentHeapSize)&& (heap[hijo+1] < heap[hijo])){ hijo++;}
-            if (heap[hijo] < tmp) { //compara con el hijo mas pequeño
+            if ((hijo!=currentHeapSize)&& (heap[hijo+1].prioridad< heap[hijo].prioridad)){ hijo++;}
+            if (heap[hijo].prioridad < tmp.prioridad) { //compara con el hijo mas pequeño
             heap[espacioLibre]=heap[hijo];
             espacioLibre=hijo;
             } else {coloca=false;}
         }
-        heap[espacioLibre]=tmp;// Después de comparar se asigna el valor que se hundia en el espacio libre resultante
+        heap[espacioLibre] = tmp;// Después de comparar se asigna el valor que se hundia en el espacio libre resultante
     }
 }
