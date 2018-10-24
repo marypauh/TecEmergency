@@ -42,6 +42,10 @@ public class Main {
         System.out.println(filaCola.toString());
         System.out.println(filaCola.nextPaciente());
         System.out.println(filaCola.nextPaciente());
+        
+        
+        Principal principal = new Principal();
+        principal.setVisible(true);
     }
     
         
