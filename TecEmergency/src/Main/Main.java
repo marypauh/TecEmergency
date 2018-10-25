@@ -11,6 +11,7 @@ import Interfaz.Principal;
 import Estructura.Heap;
 import Estructura.Pacientes;
 
+
 /**
  *
  * @author marip

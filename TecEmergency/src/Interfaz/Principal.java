@@ -8,6 +8,7 @@ package Interfaz;
 import Estructura.FilaPacientes;
 import Interfaz.Inicio;
 import modelo.enums.CategoriasEstructura;
+import Main.Main;
 
 /**
  *
@@ -158,10 +159,13 @@ public class Principal extends javax.swing.JFrame {
         inicio.setVisible(true);
         this.setVisible(false);
         
-        FilaPacientes filaRoja = new FilaPacientes(comboEgresos.getSelectedItem().toString());
-        FilaPacientes filaAmarilla = new FilaPacientes(comboAmarillo.getSelectedItem().toString());
-        FilaPacientes filaVerde = new FilaPacientes(comboVerde.getSelectedItem().toString());
-        FilaPacientes filaEgresos = new FilaPacientes(comboEgresos.getSelectedItem().toString());
+        ServicioEmergencia.Filas.filaRoja = new FilaPacientes(comboRojo1.getSelectedItem().toString());
+        ServicioEmergencia.Filas.filaAmarilla  = new FilaPacientes(comboAmarillo.getSelectedItem().toString());
+        ServicioEmergencia.Filas.filaVerde = new FilaPacientes(comboVerde.getSelectedItem().toString());
+        ServicioEmergencia.Filas.filaEgresos  = new FilaPacientes(comboEgresos.getSelectedItem().toString());
+        
+        System.out.print(comboRojo1.getSelectedItem().toString());
+        System.out.print(comboVerde.getSelectedItem().toString());
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**

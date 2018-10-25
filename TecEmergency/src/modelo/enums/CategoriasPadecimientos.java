@@ -17,9 +17,9 @@ public enum CategoriasPadecimientos {
      QUEBRADURA("Q","Quebradura"),
      OTRO("O","Otro");
 
-    public static CategoriasPadecimientos valueOf(Object valueAt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    ///public static CategoriasPadecimientos valueOf(Object valueAt) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
      
      private String codigoCategoria ;
      private String palabraCategoria;

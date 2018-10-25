@@ -15,6 +15,7 @@ import java.net.URLEncoder;
 import java.net.HttpURLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import modelo.enums.CategoriasColor;
 import modelo.enums.CategoriasPadecimientos;
@@ -184,19 +185,29 @@ public class Ingresos extends javax.swing.JFrame {
        fecha = txtFecha.getText();
        telefono = txtTelefono.getText();
        detalle = txtDetalle.getText();
-       ficha = CategoriasPadecimientos.valueOf(ComboTipo.getSelectedIndex()).toString();
-       padecimiento = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem()).toString();
-       color = CategoriasColor.valueOf(ComboTipo.getSelectedItem()).toString();
+       ficha = txtTelefono.getText();
+       padecimiento = ComboPadecimiento.getSelectedItem().toString();
+       color = ComboTipo.getSelectedItem().toString();
        
-     
+       System.out.print(CategoriasColor.valueOf(ComboPadecimiento.getSelectedItem()));
+       System.out.print(CategoriasColor.valueOf(ComboTipo.getSelectedItem()));
                
         
-        //Pacientes paciente = new Pacientes("FICHA",color, padecimiento,horaEntrada, null);
-        //if (("V").equals(tipo)){
-            //fila
-        //}
-    
+        Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
+        
+        if (random > 0.25){
+            if (("VERDE").equals(color)){
+                ServicioEmergencia.Filas.filaVerde.insertPaciente(paciente);
+            }if (("AMARILLO").equals(color)){
+                ServicioEmergencia.Filas.filaAmarilla.insertPaciente(paciente);
+            }
+        }else{
+            ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
+        }
        
+       //System.out.println("Rojo" + Main.Main.filaRoja.toString());
+       //System.out.println("Amarillo" + Main.Main.filaAmarilla.toString());
+       //System.out.println("verde" + Main.Main.filaVerde.toString());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
