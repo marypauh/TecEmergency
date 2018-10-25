@@ -15,9 +15,11 @@ import java.net.URLEncoder;
 import java.net.HttpURLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import modelo.enums.CategoriasColor;
 import modelo.enums.CategoriasPadecimientos;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -164,8 +166,19 @@ public class Ingresos extends javax.swing.JFrame {
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
      //sendSMS();
+     
+     //Genera el numero random para ingreso emergencia
+        Random rnd = new Random();
+        Double random = rnd.nextDouble();
+        System.out.println("Número aleatorio entre [0,1[ : "+ random);
+        
+          //Obtiene fecha y hora del sistema
+                Calendar fecha1 = Calendar.getInstance();
+		fecha1.setTime(new Date());
+               Date horaEntrada = fecha1.getTime();
+               System.out.println("Hora Entrada: " + horaEntrada);
+     
        String nombre, fecha, telefono, detalle, color,padecimiento;
-       Date horaEntrada;
        String ficha;
        nombre = txtNombre.getText();
        fecha = txtFecha.getText();
@@ -175,9 +188,9 @@ public class Ingresos extends javax.swing.JFrame {
        padecimiento = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem()).toString();
        color = CategoriasColor.valueOf(ComboTipo.getSelectedItem()).toString();
        
-        DateFormat Formato = new SimpleDateFormat("HH:mm:ss");
+     
+               
         
-        //System.out.println("Hora: "+Formato.format(hora));
         //Pacientes paciente = new Pacientes("FICHA",color, padecimiento,horaEntrada, null);
         //if (("V").equals(tipo)){
             //fila
