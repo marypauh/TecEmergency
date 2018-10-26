@@ -66,7 +66,7 @@ public class Pacientes {
                 prioridad = 0;
                 if("INFARTO".equals(padecimiento)){
                     return prioridad +=0;
-                }   if("PERDIDASANGREPORHERIDA".equals(padecimiento)){
+                }   if("PERDIDADESANGREPORHERIDA".equals(padecimiento)){
                     return prioridad +=1;
                 }   if("DOLORESTOMACAL".equals(padecimiento)){
                     return prioridad +=2;
@@ -96,7 +96,7 @@ public class Pacientes {
                 prioridad = 12;
                 if("INFARTO".equals(padecimiento)){
                     return prioridad;
-                }   if("PERDIDASANGREPORHERIDA".equals(padecimiento)){
+                }   if("PERDIDADESANGREPORHERIDA".equals(padecimiento)){
                     return prioridad +=1;
                 }   if("DOLORESTOMACAL".equals(padecimiento)){
                     return prioridad +=2;

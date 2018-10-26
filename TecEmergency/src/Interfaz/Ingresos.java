@@ -208,7 +208,7 @@ public class Ingresos extends javax.swing.JFrame {
        color = ComboTipo.getSelectedItem().toString();
        
        
-       System.out.print(padecimiento);
+       //System.out.print(padecimiento);
        //System.out.print(CategoriasColor.valueOf(ComboTipo.getSelectedItem()).toString());
                
         
@@ -225,9 +225,9 @@ public class Ingresos extends javax.swing.JFrame {
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
         }
        
-       System.out.println("Rojo" + Filas.filaRoja.toString());
-       System.out.println("Amarillo" + Filas.filaAmarilla.toString());
-       System.out.println("verde" + Filas.filaVerde.toString());
+       //System.out.println("Rojo" + Filas.filaRoja.toString());
+       //System.out.println("Amarillo" + Filas.filaAmarilla.toString());
+       //System.out.println("verde" + Filas.filaVerde.toString());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
