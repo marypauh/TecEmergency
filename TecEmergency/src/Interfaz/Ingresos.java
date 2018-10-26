@@ -58,10 +58,11 @@ public class Ingresos extends javax.swing.JFrame {
         lblDetalle = new javax.swing.JLabel();
         txtDetalle = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JButton();
         lblTelefono = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        btnAgregar = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -101,15 +102,6 @@ public class Ingresos extends javax.swing.JFrame {
         getContentPane().add(txtDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 170, 30));
         getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 240, 30));
 
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setText("Agregar Paciente");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, -1));
-
         lblTelefono.setForeground(new java.awt.Color(255, 255, 255));
         lblTelefono.setText("Teléfono:");
         getContentPane().add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
@@ -117,15 +109,40 @@ public class Ingresos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar Paciente");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(217, Short.MAX_VALUE)
+                .addComponent(btnAgregar)
+                .addGap(66, 66, 66)
+                .addComponent(btnMenu)
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(445, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnMenu))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 530, 490));
@@ -211,6 +228,12 @@ public class Ingresos extends javax.swing.JFrame {
        //System.out.println("verde" + Main.Main.filaVerde.toString());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+         Inicio menu = new Inicio();
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,6 +243,7 @@ public class Ingresos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboPadecimiento;
     private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDetalle;
