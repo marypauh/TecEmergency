@@ -202,6 +202,7 @@ public class Ingresos extends javax.swing.JFrame {
                 ServicioEmergencia.Filas.filaAmarilla.insertPaciente(paciente);
             }
         }else{
+            paciente.setColor("ROJO");
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
         }
        

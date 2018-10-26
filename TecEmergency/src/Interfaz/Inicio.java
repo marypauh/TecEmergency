@@ -60,6 +60,11 @@ public class Inicio extends javax.swing.JFrame {
         btnEgresos.setBackground(new java.awt.Color(204, 0, 0));
         btnEgresos.setForeground(new java.awt.Color(255, 255, 255));
         btnEgresos.setText("Egresos");
+        btnEgresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEgresosActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEgresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
         btnUrgencias.setBackground(new java.awt.Color(204, 0, 0));
@@ -80,6 +85,11 @@ public class Inicio extends javax.swing.JFrame {
         btnAdministrador.setBackground(new java.awt.Color(204, 0, 0));
         btnAdministrador.setForeground(new java.awt.Color(255, 255, 255));
         btnAdministrador.setText("Administrador");
+        btnAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministradorActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
 
         lblFondo.setBackground(new java.awt.Color(255, 255, 255));
@@ -106,6 +116,14 @@ public class Inicio extends javax.swing.JFrame {
     private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIngresosActionPerformed
+
+    private void btnEgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEgresosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEgresosActionPerformed
+
+    private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdministradorActionPerformed
 
     /**
      * @param args the command line arguments
