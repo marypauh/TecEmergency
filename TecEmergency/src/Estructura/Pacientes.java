@@ -62,49 +62,49 @@ public class Pacientes {
     }
     public int setPrioridad(String color, String padecimiento){
         if(null != color)switch (color) {
-            case "rojo":
+            case "ROJO":
                 prioridad = 0;
-                if("Infarto".equals(padecimiento)){
+                if("INFARTO".equals(padecimiento)){
                     return prioridad +=0;
-                }   if("Pérdida sangre por herida".equals(padecimiento)){
+                }   if("PERDIDASANGREPORHERIDA".equals(padecimiento)){
                     return prioridad +=1;
-                }   if("Dolor estomacal ".equals(padecimiento)){
+                }   if("DOLORESTOMACAL".equals(padecimiento)){
                     return prioridad +=2;
-                }   if("Parto".equals(padecimiento)){
+                }   if("PARTO".equals(padecimiento)){
                     return prioridad +=3;
-                }   if("Quebradura".equals(padecimiento)){
+                }   if("QUEBRADURA".equals(padecimiento)){
                     return prioridad +=4;
-                }   if("Otro".equals(padecimiento)){
+                }   if("OTRO".equals(padecimiento)){
                     return prioridad +=5;
                 }   break;
-            case "amarillo":
+            case "AMARILLO":
                 prioridad = 6;
-                if("Infarto".equals(padecimiento)){
+                if("INFARTO".equals(padecimiento)){
                     return prioridad += 0;
-                }   if("Pérdida sangre por herida".equals(padecimiento)){
+                }   if("PERDIDADESANGREPORHERIDA".equals(padecimiento)){
                     return prioridad +=1;
-                }   if("Dolor estomacal ".equals(padecimiento)){
+                }   if("DOLORESTOMACAL".equals(padecimiento)){
                     return prioridad +=2;
-                }   if("Parto".equals(padecimiento)){
+                }   if("PARTO".equals(padecimiento)){
                     return prioridad +=3;
-                }   if("Quebradura".equals(padecimiento)){
+                }   if("QUEBRADURA".equals(padecimiento)){
                     return prioridad +=4;
-                }   if("Otro".equals(padecimiento)){
+                }   if("OTRO".equals(padecimiento)){
                     return prioridad +=5;
                 }   break;
-            case "verde":
+            case "VERDE":
                 prioridad = 12;
-                if("Infarto".equals(padecimiento)){
+                if("INFARTO".equals(padecimiento)){
                     return prioridad;
-                }   if("Pérdida sangre por herida".equals(padecimiento)){
+                }   if("PERDIDASANGREPORHERIDA".equals(padecimiento)){
                     return prioridad +=1;
-                }   if("Dolor estomacal ".equals(padecimiento)){
+                }   if("DOLORESTOMACAL".equals(padecimiento)){
                     return prioridad +=2;
-                }   if("Parto".equals(padecimiento)){
+                }   if("PARTO".equals(padecimiento)){
                     return prioridad +=3;
-                }   if("Quebradura".equals(padecimiento)){
+                }   if("QUEBRADURA".equals(padecimiento)){
                     return prioridad +=4;
-                }   if("Otro".equals(padecimiento)){
+                }   if("OTRO".equals(padecimiento)){
                     return prioridad +=5;
                 }   break;
             default:

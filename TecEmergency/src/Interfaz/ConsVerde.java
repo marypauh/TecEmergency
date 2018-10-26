@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author marip
@@ -15,7 +17,10 @@ public class ConsVerde extends javax.swing.JFrame {
      * Creates new form ConsVerde
      */
     public ConsVerde() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("A");
         initComponents();
+        tabla_verdes.setModel(modelo);
         this.setLocationRelativeTo(null);
     }
 

@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Estructura.Pacientes;
+import ServicioEmergencia.Filas;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -206,8 +207,9 @@ public class Ingresos extends javax.swing.JFrame {
        padecimiento = ComboPadecimiento.getSelectedItem().toString();
        color = ComboTipo.getSelectedItem().toString();
        
-       System.out.print(CategoriasColor.valueOf(ComboPadecimiento.getSelectedItem()));
-       System.out.print(CategoriasColor.valueOf(ComboTipo.getSelectedItem()));
+       
+       System.out.print(padecimiento);
+       //System.out.print(CategoriasColor.valueOf(ComboTipo.getSelectedItem()).toString());
                
         
         Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
@@ -223,9 +225,9 @@ public class Ingresos extends javax.swing.JFrame {
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
         }
        
-       //System.out.println("Rojo" + Main.Main.filaRoja.toString());
-       //System.out.println("Amarillo" + Main.Main.filaAmarilla.toString());
-       //System.out.println("verde" + Main.Main.filaVerde.toString());
+       System.out.println("Rojo" + Filas.filaRoja.toString());
+       System.out.println("Amarillo" + Filas.filaAmarilla.toString());
+       System.out.println("verde" + Filas.filaVerde.toString());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
