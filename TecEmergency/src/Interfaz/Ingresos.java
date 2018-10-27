@@ -250,6 +250,10 @@ public class Ingresos extends javax.swing.JFrame {
         
         ConsVerde newe = new ConsVerde();
         newe.setVisible(true);
+        ConsAmarillo nueva = new ConsAmarillo();
+        nueva.setVisible(true);
+        ConsRojo a = new ConsRojo();
+        a.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     /**

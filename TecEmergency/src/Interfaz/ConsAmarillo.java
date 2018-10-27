@@ -5,17 +5,25 @@
  */
 package Interfaz;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author marip
  */
 public class ConsAmarillo extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ConsVerde
-     */
+    
+    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getCantTotalConsultorios();
+    
     public ConsAmarillo() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Condición");
+        modelo.addColumn("Número");
         initComponents();
+        for(int i = 1;i<=dato;i++){
+            modelo.addRow(new Object[]{ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getCantPacientesAtendidos()});
+        }
+        tabla_amarillos.setModel(modelo);
         this.setLocationRelativeTo(null);
     }
 

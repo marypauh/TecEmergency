@@ -11,10 +11,6 @@ import ServicioEmergencia.ServicioConsultorios;
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author marip
- */
 
 public class ConsVerde extends javax.swing.JFrame {
     
@@ -22,8 +18,8 @@ public class ConsVerde extends javax.swing.JFrame {
     
     public ConsVerde() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Numero");
         modelo.addColumn("Condición");
+        modelo.addColumn("Número");
         initComponents();
         for(int i = 1;i<=dato;i++){
             modelo.addRow(new Object[]{ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getCantPacientesAtendidos()});
