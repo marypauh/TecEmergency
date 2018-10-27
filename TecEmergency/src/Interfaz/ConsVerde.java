@@ -5,21 +5,29 @@
  */
 package Interfaz;
 
+import Estructura.ListaConsultorios;
+import Estructura.Consultorios;
+import ServicioEmergencia.ServicioConsultorios;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author marip
  */
-public class ConsVerde extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ConsVerde
-     */
+public class ConsVerde extends javax.swing.JFrame {
+    
+    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getCantTotalConsultorios();
+    
     public ConsVerde() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("A");
+        modelo.addColumn("Numero");
+        modelo.addColumn("Condición");
         initComponents();
+        for(int i = 1;i<=dato;i++){
+            modelo.addRow(new Object[]{ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getCantPacientesAtendidos()});
+        }
         tabla_verdes.setModel(modelo);
         this.setLocationRelativeTo(null);
     }

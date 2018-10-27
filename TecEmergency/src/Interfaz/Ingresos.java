@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Estructura.ListaConsultorios;
 import Estructura.Pacientes;
 import ServicioEmergencia.Filas;
 import java.io.BufferedReader;
@@ -234,6 +235,9 @@ public class Ingresos extends javax.swing.JFrame {
          Inicio menu = new Inicio();
         menu.setVisible(true);
         this.setVisible(false);
+        
+        ConsVerde newe = new ConsVerde();
+        newe.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     /**

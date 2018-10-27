@@ -32,5 +32,30 @@ public class ListaConsultorios {
             cantConsultoriosActivos = cantActivos;
         }
     }
+
+    public Consultorios[] getConsultorios() {
+        return consultorios;
+    }
+
+    public int getCantTotalConsultorios() {
+        return cantTotalConsultorios;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "ListaConsultorios{" + "color=" + color + ", cantTotalConsultorios=" + cantTotalConsultorios + ", cantConsultoriosActivos=" + cantConsultoriosActivos + ", consultorios=" + consultorios + '}';
+    }
+    
+    
+    
     
 }

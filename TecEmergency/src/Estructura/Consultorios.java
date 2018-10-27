@@ -15,7 +15,7 @@ public class Consultorios {
     int cantPacientesAtendidos;
     
     public Consultorios() {
-        estado = "libre";
+        estado = "Libre";
     }
 
     public String getEstado() {
@@ -55,6 +55,7 @@ public class Consultorios {
     public void setCantPacientesAtendidos(int cantPacientesAtendidos) {
         this.cantPacientesAtendidos = cantPacientesAtendidos;
     }
+    
     
 
 }
