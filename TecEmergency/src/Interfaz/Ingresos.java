@@ -23,6 +23,7 @@ import modelo.enums.CategoriasColor;
 import modelo.enums.CategoriasPadecimientos;
 import java.util.Date;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -221,7 +222,9 @@ public class Ingresos extends javax.swing.JFrame {
             }if (("AMARILLO").equals(color)){
                 ServicioEmergencia.Filas.filaAmarilla.insertPaciente(paciente);
             }
+            JOptionPane.showMessageDialog(null, "El paciente se ha guardado exitosamente");
         }else{
+            JOptionPane.showMessageDialog(null, "Por aleatoridad, el paciente ha pasado de " + color + "a Rojo");
             paciente.setColor("ROJO");
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
         }
