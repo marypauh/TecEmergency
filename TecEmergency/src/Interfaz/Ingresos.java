@@ -33,6 +33,8 @@ public class Ingresos extends javax.swing.JFrame {
 
     Date hora = new Date();
     
+    static int contadorP = 0;
+    
     /**
      * Creates new form Ingresos
      */
@@ -199,14 +201,20 @@ public class Ingresos extends javax.swing.JFrame {
                Date horaEntrada = fecha1.getTime();
                System.out.println("Hora Entrada: " + horaEntrada);
      
-       String nombre, fecha, telefono, detalle, color,padecimiento;
+       String nombre, fecha, telefono, detalle, color;
+       String padecimiento;
        String ficha;
+       CategoriasPadecimientos categoria;
+       CategoriasColor color1;
+       
        nombre = txtNombre.getText();
        fecha = txtFecha.getText();
        telefono = txtTelefono.getText();
        detalle = txtDetalle.getText();
-       ficha = txtTelefono.getText();
        padecimiento = ComboPadecimiento.getSelectedItem().toString();
+       categoria = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem().toString());
+       color1 = CategoriasColor.valueOf(ComboTipo.getSelectedItem().toString());
+       ficha = color1.getCodigoCategoria() + categoria.getCodigoCategoria() + contadorP+1;
        color = ComboTipo.getSelectedItem().toString();
        
        
@@ -215,6 +223,7 @@ public class Ingresos extends javax.swing.JFrame {
                
         
         Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
+        System.out.println(paciente.toString());
         
         if (random > 0.25){
             if (("VERDE").equals(color)){
@@ -222,12 +231,12 @@ public class Ingresos extends javax.swing.JFrame {
             }if (("AMARILLO").equals(color)){
                 ServicioEmergencia.Filas.filaAmarilla.insertPaciente(paciente);
             }
-            JOptionPane.showMessageDialog(null, "El paciente se ha guardado exitosamente");
         }else{
-            JOptionPane.showMessageDialog(null, "Por aleatoridad, el paciente ha pasado de " + color + "a Rojo");
             paciente.setColor("ROJO");
+            paciente.setFicha(ficha);
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
         }
+       
        
        //System.out.println("Rojo" + Filas.filaRoja.toString());
        //System.out.println("Amarillo" + Filas.filaAmarilla.toString());
