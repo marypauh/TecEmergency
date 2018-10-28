@@ -197,7 +197,7 @@ public class Principal extends javax.swing.JFrame {
         ServicioEmergencia.ServicioConsultorios.consultoriosEgresos = new ListaConsultorios("EGRESOS",1);
         
         
-        //System.out.print(comboVerde.getSelectedItem().toString());
+        System.out.print(comboVerde.getSelectedItem().toString());
         //System.out.println(ServicioEmergencia.ServicioConsultorios.consultoriosVerdes);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
