@@ -21,9 +21,10 @@ public class ConsAmarillo extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
+        modelo.addColumn("Estado");
         initComponents();
         for(int i = 1;i<=dato;i++){
-            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado()});
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getActivo() });
         }
         tabla_amarillos.setModel(modelo);
         this.setLocationRelativeTo(null);

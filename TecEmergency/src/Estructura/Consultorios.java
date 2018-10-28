@@ -10,12 +10,22 @@ package Estructura;
  * @author raquelrojas
  */
 public class Consultorios {
-    String estado;
+    String estado, activo;
     Pacientes pacienteAtendiendo;
     int cantPacientesAtendidos;
+
+    public String getActivo() {
+        return activo;
+    }
+
+    public void setActivo(String activo) {
+        this.activo = activo;
+    }
+    
     
     public Consultorios() {
         estado = "Libre";
+        activo = "Activo";
     }
 
     public String getEstado() {

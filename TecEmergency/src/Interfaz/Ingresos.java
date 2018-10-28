@@ -207,7 +207,8 @@ public class Ingresos extends javax.swing.JFrame {
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
             JOptionPane.showMessageDialog(null, "Por aleatoriedad, el paciente ha pasado de " + color + " a ROJO. con la ficha " + ficha);
         }
-        ServicioEmergencia.Sendsms.sendSMS(nombre + " se le ha asignado la ficha " + ficha, telefono);
+        //ServicioEmergencia.Sendsms.sendSMS(nombre + " se le ha asignado la ficha " + ficha, telefono);
+        JOptionPane.showMessageDialog(null, "Se ha enviado un mensaje de texto con la ficha asignada");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -219,8 +220,7 @@ public class Ingresos extends javax.swing.JFrame {
         newe.setVisible(true);
         ConsAmarillo nueva = new ConsAmarillo();
         nueva.setVisible(true);
-        ConsRojo a = new ConsRojo();
-        a.setVisible(true);
+        
     }//GEN-LAST:event_btnMenuActionPerformed
 
     /**

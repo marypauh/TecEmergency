@@ -131,7 +131,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdministradorActionPerformed
 
     private void btnEmergenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmergenciasActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        ConsRojo a = new ConsRojo();
+        a.setVisible(true);
     }//GEN-LAST:event_btnEmergenciasActionPerformed
 
     /**
