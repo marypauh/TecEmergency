@@ -80,6 +80,11 @@ public class Inicio extends javax.swing.JFrame {
         btnEmergencias.setBackground(new java.awt.Color(204, 0, 0));
         btnEmergencias.setForeground(new java.awt.Color(255, 255, 255));
         btnEmergencias.setText("Emergencias");
+        btnEmergencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmergenciasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEmergencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, -1));
 
         btnAdministrador.setBackground(new java.awt.Color(204, 0, 0));
@@ -124,6 +129,10 @@ public class Inicio extends javax.swing.JFrame {
     private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdministradorActionPerformed
+
+    private void btnEmergenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmergenciasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmergenciasActionPerformed
 
     /**
      * @param args the command line arguments

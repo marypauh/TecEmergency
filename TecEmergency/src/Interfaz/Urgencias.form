@@ -26,7 +26,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="btnVerde" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="97" max="32767" attributes="0"/>
+              <EmptySpace pref="93" max="32767" attributes="0"/>
               <Component id="btnAmarillo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
           </Group>
@@ -81,7 +81,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAmarillo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Amarilo"/>
+        <Property name="text" type="java.lang.String" value="Amarillo"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAmarilloActionPerformed"/>

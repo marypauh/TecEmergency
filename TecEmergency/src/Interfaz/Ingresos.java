@@ -214,7 +214,7 @@ public class Ingresos extends javax.swing.JFrame {
        categoria = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem().toString());
        color1 = CategoriasColor.valueOf(ComboTipo.getSelectedItem().toString());
        Ingresos.contadorP++;
-       ficha = color1.getCodigoCategoria() + " - " +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
+       ficha = color1.getCodigoCategoria() + "-" +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
        color = ComboTipo.getSelectedItem().toString();
        
        

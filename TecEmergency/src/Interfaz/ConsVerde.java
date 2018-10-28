@@ -7,7 +7,9 @@ package Interfaz;
 
 import Estructura.ListaConsultorios;
 import Estructura.Consultorios;
+import Estructura.Pacientes;
 import ServicioEmergencia.ServicioConsultorios;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -18,11 +20,22 @@ public class ConsVerde extends javax.swing.JFrame {
     
     public ConsVerde() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Condición");
-        modelo.addColumn("Número");
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
         initComponents();
         for(int i = 1;i<=dato;i++){
-            modelo.addRow(new Object[]{ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getCantPacientesAtendidos()});
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado()});
+        }
+        tabla_verdes.setModel(modelo);
+        this.setLocationRelativeTo(null);
+    }
+    public void actualizarTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
+        initComponents();
+        for(int i = 1;i<=dato;i++){
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado()});
         }
         tabla_verdes.setModel(modelo);
         this.setLocationRelativeTo(null);
@@ -37,10 +50,16 @@ public class ConsVerde extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_verdes = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
+        btnAtender = new javax.swing.JButton();
+        btnLiberarAtender = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,22 +86,47 @@ public class ConsVerde extends javax.swing.JFrame {
             }
         });
 
+        btnAtender.setText("Atender");
+        btnAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtenderActionPerformed(evt);
+            }
+        });
+
+        btnLiberarAtender.setText("Liberar y Antender");
+        btnLiberarAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLiberarAtenderActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Seleccione el consultorio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAtender)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLiberarAtender)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMenu))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(lblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(242, 242, 242)
-                        .addComponent(btnMenu)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(190, 190, 190)
+                                .addComponent(lblTitulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +136,11 @@ public class ConsVerde extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnMenu)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMenu)
+                    .addComponent(jLabel1)
+                    .addComponent(btnAtender)
+                    .addComponent(btnLiberarAtender))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -105,12 +153,54 @@ public class ConsVerde extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tabla_verdes.getModel();
+        int indice = tabla_verdes.getSelectedRow();//para obtener la fila seleccionada
+        indice++; //aumentamos en 1 por que el arreglo empieza en 0
+        if (ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].getEstado() == "Libre"){
+            Pacientes paciente = ServicioEmergencia.Filas.filaVerde.nextPaciente();
+            if (paciente == null ){//falta ver como validar
+                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+            }else{
+             //hacer hora salida
+            //duracion
+                ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].atenderSigPaciente(paciente);
+                ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].setEstado("Ocupado");
+                JOptionPane.showMessageDialog(null, "Atendiendo paciente" + paciente.getFicha() + "en consultorio #" + indice );
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "El consultorio no esta libre");
+        }
+        actualizarTabla();
+    }//GEN-LAST:event_btnAtenderActionPerformed
+
+    private void btnLiberarAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarAtenderActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tabla_verdes.getModel();
+        int indice = tabla_verdes.getSelectedRow();//para obtener la fila seleccionada
+        indice++; //aumentamos en 1 por que el arreglo empieza en 0
+        Pacientes paciente = ServicioEmergencia.Filas.filaVerde.nextPaciente();
+        if (paciente == null ){//falta ver como validar
+                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+            }else{
+             //hacer hora salida
+            //duracion
+                ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].atenderSigPaciente(paciente);
+                ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].setEstado("Ocupado");
+                JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en consultorio #" + indice );
+            }
+        actualizarTabla();
+    }//GEN-LAST:event_btnLiberarAtenderActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtender;
+    private javax.swing.JButton btnLiberarAtender;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tabla_verdes;

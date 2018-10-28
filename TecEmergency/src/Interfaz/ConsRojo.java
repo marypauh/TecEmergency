@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import Estructura.Pacientes;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,12 +18,24 @@ public class ConsRojo extends javax.swing.JFrame {
     int dato = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getCantTotalConsultorios();
     
     public ConsRojo() {
-        initComponents();
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Condición");
-        modelo.addColumn("Número");
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
+        initComponents();
         for(int i = 1;i<=dato;i++){
-            modelo.addRow(new Object[]{ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getCantPacientesAtendidos()});
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado()});
+        }
+        tabla_rojos.setModel(modelo);
+        this.setLocationRelativeTo(null);
+    }
+    
+    public void actualizarTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
+        initComponents();
+        for(int i = 1;i<=dato;i++){
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado()});
         }
         tabla_rojos.setModel(modelo);
         this.setLocationRelativeTo(null);
@@ -41,11 +55,13 @@ public class ConsRojo extends javax.swing.JFrame {
         tabla_rojos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnAtender = new javax.swing.JButton();
+        btnLiberarAtender = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(598, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -65,14 +81,76 @@ public class ConsRojo extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 470, 340));
 
         jButton1.setText("Menú");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Consultorios Rojos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
 
+        jLabel2.setText("Seleccione el consultorio");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+
+        btnAtender.setText("Atender");
+        btnAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtenderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, -1, -1));
+
+        btnLiberarAtender.setText("Liberar y Antender");
+        btnLiberarAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLiberarAtenderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLiberarAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tabla_rojos.getModel();
+        int indice = tabla_rojos.getSelectedRow();//para obtener la fila seleccionada
+        indice++; //aumentamos en 1 por que el arreglo empieza en 0
+        if (ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getEstado() == "Libre"){
+            Pacientes paciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
+            if (paciente == null ){//falta ver como validar
+                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+            }else{
+                //hacer hora salida
+                //duracion
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].atenderSigPaciente(paciente);
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Ocupado");
+                JOptionPane.showMessageDialog(null, "Atendiendo paciente" + paciente.getFicha() + "en consultorio #" + indice );
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "El consultorio no esta libre");
+        }
+        actualizarTabla();
+    }//GEN-LAST:event_btnAtenderActionPerformed
+
+    private void btnLiberarAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarAtenderActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tabla_rojos.getModel();
+        int indice = tabla_rojos.getSelectedRow();//para obtener la fila seleccionada
+        indice++; //aumentamos en 1 por que el arreglo empieza en 0
+         if (ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getEstado() == "Ocupado"){
+            Pacientes pacienteSacar = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getPacienteAtendiendo();
+            ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteSacar);
+            
+            Pacientes paciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
+            if (paciente == null ){//falta ver como validar
+                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+            }else{
+            //hacer hora salida
+            //duracion
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].atenderSigPaciente(paciente);
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Ocupado");
+                JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en consultorio #" + indice );
+        }
+            actualizarTabla();
+         }else{JOptionPane.showMessageDialog(null, "No hay paciente en consultorio para liberar");}
+    }//GEN-LAST:event_btnLiberarAtenderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,8 +189,11 @@ public class ConsRojo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtender;
+    private javax.swing.JButton btnLiberarAtender;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_rojos;

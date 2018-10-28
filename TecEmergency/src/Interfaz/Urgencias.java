@@ -47,7 +47,7 @@ public class Urgencias extends javax.swing.JFrame {
             }
         });
 
-        btnAmarillo.setText("Amarilo");
+        btnAmarillo.setText("Amarillo");
         btnAmarillo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAmarilloActionPerformed(evt);
@@ -68,7 +68,7 @@ public class Urgencias extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(btnVerde)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(btnAmarillo)
                 .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()

@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import Estructura.Pacientes;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,11 +19,22 @@ public class ConsAmarillo extends javax.swing.JFrame {
     
     public ConsAmarillo() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Condición");
-        modelo.addColumn("Número");
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
         initComponents();
         for(int i = 1;i<=dato;i++){
-            modelo.addRow(new Object[]{ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getCantPacientesAtendidos()});
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado()});
+        }
+        tabla_amarillos.setModel(modelo);
+        this.setLocationRelativeTo(null);
+    }
+    public void actualizarTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
+        initComponents();
+        for(int i = 1;i<=dato;i++){
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado()});
         }
         tabla_amarillos.setModel(modelo);
         this.setLocationRelativeTo(null);
@@ -40,6 +53,9 @@ public class ConsAmarillo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_amarillos = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
+        btnAtender = new javax.swing.JButton();
+        btnLiberarAtender = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,33 +82,58 @@ public class ConsAmarillo extends javax.swing.JFrame {
             }
         });
 
+        btnAtender.setText("Atender");
+        btnAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtenderActionPerformed(evt);
+            }
+        });
+
+        btnLiberarAtender.setText("Liberar y Antender");
+        btnLiberarAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLiberarAtenderActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Seleccione el consultorio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(lblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtender)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLiberarAtender)
+                        .addGap(18, 18, 18)
                         .addComponent(btnMenu)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(169, 169, 169))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(lblTitulo)
-                .addGap(32, 32, 32)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMenu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAtender)
+                    .addComponent(btnLiberarAtender)
+                    .addComponent(jLabel1)
+                    .addComponent(btnMenu))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,12 +146,49 @@ public class ConsAmarillo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void btnLiberarAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarAtenderActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tabla_amarillos.getModel();
+        int indice = tabla_amarillos.getSelectedRow();//para obtener la fila seleccionada
+        indice++; //aumentamos en 1 por que el arreglo empieza en 0
+        Pacientes paciente = ServicioEmergencia.Filas.filaAmarilla.nextPaciente();
+        if (paciente == null ){//falta ver como validar
+            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+        }else{
+            //hacer hora salida
+            //duracion
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].atenderSigPaciente(paciente);
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Ocupado");
+            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en consultorio #" + indice );
+        }
+        actualizarTabla();
+    }//GEN-LAST:event_btnLiberarAtenderActionPerformed
+
+    private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tabla_amarillos.getModel();
+        int indice = tabla_amarillos.getSelectedRow();//para obtener la fila seleccionada
+        indice++;
+        Pacientes paciente = ServicioEmergencia.Filas.filaAmarilla.nextPaciente();
+        if (paciente == null ){//falta ver como validar
+            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+        }else{
+            //hacer hora salida
+            //duracion
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].atenderSigPaciente(paciente);
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Ocupado");
+            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en consultorio #" + indice );
+        }
+        actualizarTabla();
+    }//GEN-LAST:event_btnAtenderActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtender;
+    private javax.swing.JButton btnLiberarAtender;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tabla_amarillos;
