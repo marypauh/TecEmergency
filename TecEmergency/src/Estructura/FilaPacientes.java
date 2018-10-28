@@ -40,6 +40,16 @@ public class FilaPacientes {
         }
     }
     
+        public boolean  isEmpty(){
+        if ("HEAP".equals(tipoDeFila)){
+            if (heap.currentHeapSize == 0){
+                return true;
+            }else{return false;}
+        }else{
+            return (cola.size == 0);
+        }
+    }
+    
     @Override
     public String toString(){
         if ("HEAP".equals(tipoDeFila)){

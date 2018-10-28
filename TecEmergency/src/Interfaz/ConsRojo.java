@@ -120,7 +120,7 @@ public class ConsRojo extends javax.swing.JFrame {
         indice++; //aumentamos en 1 por que el arreglo empieza en 0
         if (ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getEstado() == "Libre"){
             Pacientes paciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
-            if (paciente == null ){//falta ver como validar
+            if (paciente == null){//falta ver como validar
                 JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
             }else{
                 //hacer hora salida
@@ -144,7 +144,8 @@ public class ConsRojo extends javax.swing.JFrame {
             ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteSacar);
             
             Pacientes paciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
-            if (paciente == null){//falta ver como validar
+            if ((paciente == null)){//falta ver como validar
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Libre");
                 JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
             }else{
             //hacer hora salida

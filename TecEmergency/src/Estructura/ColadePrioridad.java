@@ -4,7 +4,7 @@ public class ColadePrioridad<X>{
 
     private Node<Pacientes> front;
     private Node<Pacientes> rear;
-    private int size;
+    public int size;
 
     public ColadePrioridad(){
         this.front = new Node<>();

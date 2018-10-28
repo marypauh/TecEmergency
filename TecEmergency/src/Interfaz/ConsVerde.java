@@ -158,7 +158,7 @@ public class ConsVerde extends javax.swing.JFrame {
         indice++; //aumentamos en 1 por que el arreglo empieza en 0
         if (ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].getEstado() == "Libre"){
             Pacientes paciente = ServicioEmergencia.Filas.filaVerde.nextPaciente();
-            if (paciente == null ){//falta ver como validar
+            if (paciente == null){
                 JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
             }else{
              //hacer hora salida
@@ -178,8 +178,9 @@ public class ConsVerde extends javax.swing.JFrame {
         int indice = tabla_verdes.getSelectedRow();//para obtener la fila seleccionada
         indice++; //aumentamos en 1 por que el arreglo empieza en 0
         Pacientes paciente = ServicioEmergencia.Filas.filaVerde.nextPaciente();
-        if (paciente == null ){//falta ver como validar
-                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+        if (paciente == null){//falta ver como validar
+            ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].setEstado("Libre");
+            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
             }else{
              //hacer hora salida
             //duracion

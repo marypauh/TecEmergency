@@ -42,8 +42,7 @@ public class Heap {
         }
     }
     public Pacientes getSiguiente(){
-        if (this.isEmpty()){
-        System.out.println("No hay más pacientes en heap");//esto debe mostrarse en un show dialog
+        if (this.isEmpty()){//esto debe mostrarse en un show dialog
         return null;
         }
         int min=heap[1].prioridad;

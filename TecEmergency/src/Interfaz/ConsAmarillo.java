@@ -150,7 +150,8 @@ public class ConsAmarillo extends javax.swing.JFrame {
         int indice = tabla_amarillos.getSelectedRow();//para obtener la fila seleccionada
         indice++; //aumentamos en 1 por que el arreglo empieza en 0
         Pacientes paciente = ServicioEmergencia.Filas.filaAmarilla.nextPaciente();
-        if (paciente == null ){//falta ver como validar
+        if (paciente == null){//falta ver como validar
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Libre");
             JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
         }else{
             //hacer hora salida
@@ -167,7 +168,7 @@ public class ConsAmarillo extends javax.swing.JFrame {
         int indice = tabla_amarillos.getSelectedRow();//para obtener la fila seleccionada
         indice++;
         Pacientes paciente = ServicioEmergencia.Filas.filaAmarilla.nextPaciente();
-        if (paciente == null ){//falta ver como validar
+        if (paciente == null){//falta ver como validar
             JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
         }else{
             //hacer hora salida
