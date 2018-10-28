@@ -154,38 +154,6 @@ public class Ingresos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public String sendSMS() {
-		try {
-			// Construct data
-			String apiKey = "apikey=" + "D/sVln1pkC8-CwHLYHDD9JzbjHZsm2M17PPZsnfNst";
-			String message = "&message=" + "Te veo bb";
-			String sender = "&sender=" + "Stranger";
-			String numbers = "&numbers=" + this.txtTelefono.getText();
-			
-			// Send data
-			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
-			String data = apiKey + numbers + message + sender;
-			conn.setDoOutput(true);
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
-			conn.getOutputStream().write(data.getBytes("UTF-8"));
-			final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			final StringBuffer stringBuffer = new StringBuffer();
-			String line;
-			while ((line = rd.readLine()) != null) {
-				stringBuffer.append(line);
-			}
-			rd.close();
-			
-			return stringBuffer.toString();
-		} catch (Exception e) {
-			System.out.println("Error SMS "+e);
-			return "Error "+e;
-		
-	}
-}
-    
-    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
      //sendSMS();
      
@@ -214,18 +182,15 @@ public class Ingresos extends javax.swing.JFrame {
        categoria = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem().toString());
        color1 = CategoriasColor.valueOf(ComboTipo.getSelectedItem().toString());
        Ingresos.contadorP++;
-       ficha = color1.getCodigoCategoria() + "-" +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
        color = ComboTipo.getSelectedItem().toString();
-       
        
        //System.out.print(padecimiento);
        //System.out.print(CategoriasColor.valueOf(ComboTipo.getSelectedItem()).toString());
                
         
-        Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
-        System.out.println(paciente.toString());
-        
         if (random > 0.25){
+            ficha = color1.getCodigoCategoria() + "-" +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
+            Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
             if (("VERDE").equals(color)){
                 ServicioEmergencia.Filas.filaVerde.insertPaciente(paciente);
             }if (("AMARILLO").equals(color)){
@@ -233,12 +198,16 @@ public class Ingresos extends javax.swing.JFrame {
             }
             paciente.setFicha(ficha);
             JOptionPane.showMessageDialog(null, "El paciente ha sido ingresado exitosamente con la ficha " + ficha);
+            
         }else{
+            ficha = "R-" +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
+            Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
             paciente.setColor("ROJO");
             paciente.setFicha(ficha);
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
-            JOptionPane.showMessageDialog(null, "Por aleatoriedad, el paciente ha pasado de " + color + "a ROJO. con la ficha " + ficha);
+            JOptionPane.showMessageDialog(null, "Por aleatoriedad, el paciente ha pasado de " + color + " a ROJO. con la ficha " + ficha);
         }
+        ServicioEmergencia.Sendsms.sendSMS(nombre + " se le ha asignado la ficha " + ficha, telefono);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed

@@ -37,8 +37,8 @@ public class ConsRojo extends javax.swing.JFrame {
         for(int i = 1;i<=dato;i++){
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado()});
         }
-        tabla_rojos.setModel(modelo);
-        this.setLocationRelativeTo(null);
+        //tabla_rojos.setModel(modelo);
+        //this.setLocationRelativeTo(null);
     }
 
     /**
@@ -139,7 +139,7 @@ public class ConsRojo extends javax.swing.JFrame {
             ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteSacar);
             
             Pacientes paciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
-            if (paciente == null ){//falta ver como validar
+            if (paciente == null){//falta ver como validar
                 JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
             }else{
             //hacer hora salida
