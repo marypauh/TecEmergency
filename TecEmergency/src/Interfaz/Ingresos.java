@@ -32,8 +32,7 @@ import javax.swing.JOptionPane;
 public class Ingresos extends javax.swing.JFrame {
 
     Date hora = new Date();
-    
-    static int contadorP = 0;
+    public static int contadorP = 0;
     
     /**
      * Creates new form Ingresos
@@ -214,7 +213,8 @@ public class Ingresos extends javax.swing.JFrame {
        padecimiento = ComboPadecimiento.getSelectedItem().toString();
        categoria = CategoriasPadecimientos.valueOf(ComboPadecimiento.getSelectedItem().toString());
        color1 = CategoriasColor.valueOf(ComboTipo.getSelectedItem().toString());
-       ficha = color1.getCodigoCategoria() + categoria.getCodigoCategoria() + contadorP+1;
+       Ingresos.contadorP++;
+       ficha = color1.getCodigoCategoria() + " - " +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
        color = ComboTipo.getSelectedItem().toString();
        
        
@@ -231,16 +231,14 @@ public class Ingresos extends javax.swing.JFrame {
             }if (("AMARILLO").equals(color)){
                 ServicioEmergencia.Filas.filaAmarilla.insertPaciente(paciente);
             }
+            paciente.setFicha(ficha);
+            JOptionPane.showMessageDialog(null, "El paciente ha sido ingresado exitosamente con la ficha " + ficha);
         }else{
             paciente.setColor("ROJO");
             paciente.setFicha(ficha);
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
+            JOptionPane.showMessageDialog(null, "Por aleatoriedad, el paciente ha pasado de " + color + "a ROJO. con la ficha " + ficha);
         }
-       
-       
-       //System.out.println("Rojo" + Filas.filaRoja.toString());
-       //System.out.println("Amarillo" + Filas.filaAmarilla.toString());
-       //System.out.println("verde" + Filas.filaVerde.toString());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
