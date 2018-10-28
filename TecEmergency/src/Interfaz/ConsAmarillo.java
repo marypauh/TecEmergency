@@ -21,13 +21,11 @@ public class ConsAmarillo extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
-        modelo.addColumn("Estado");
         initComponents();
         for(int i = 1;i<=dato;i++){
-            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado(),ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getActivo() });
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado()});
         }
         tabla_amarillos.setModel(modelo);
-        this.setLocationRelativeTo(null);
     }
     public void actualizarTabla(){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -38,7 +36,6 @@ public class ConsAmarillo extends javax.swing.JFrame {
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado()});
         }
         tabla_amarillos.setModel(modelo);
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -59,6 +56,7 @@ public class ConsAmarillo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(100, 150));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitulo.setText("Consultorios Amarillos");

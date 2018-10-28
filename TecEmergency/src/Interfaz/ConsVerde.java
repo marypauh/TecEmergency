@@ -27,7 +27,6 @@ public class ConsVerde extends javax.swing.JFrame {
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado()});
         }
         tabla_verdes.setModel(modelo);
-        this.setLocationRelativeTo(null);
     }
     public void actualizarTabla(){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -38,7 +37,6 @@ public class ConsVerde extends javax.swing.JFrame {
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado()});
         }
         tabla_verdes.setModel(modelo);
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -62,6 +60,7 @@ public class ConsVerde extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(671, 150));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitulo.setText("Consultorios Verdes");
@@ -141,7 +140,7 @@ public class ConsVerde extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(btnAtender)
                     .addComponent(btnLiberarAtender))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
