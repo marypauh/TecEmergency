@@ -19,10 +19,11 @@ public class ConsVerde extends javax.swing.JFrame {
     int dato = ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getCantTotalConsultorios();
     
     public ConsVerde() {
+        initComponents();
+        this.setLocationRelativeTo(null);
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
-        initComponents();
         for(int i = 1;i<=dato;i++){
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado()});
         }

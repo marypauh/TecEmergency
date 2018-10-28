@@ -18,15 +18,16 @@ public class ConsRojo extends javax.swing.JFrame {
     int dato = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getCantTotalConsultorios();
     
     public ConsRojo() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
-        initComponents();
         for(int i = 1;i<=dato;i++){
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado()});
         }
         tabla_rojos.setModel(modelo);
-        this.setLocationRelativeTo(null);
     }
     
     public void actualizarTabla(){
@@ -53,7 +54,7 @@ public class ConsRojo extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_rojos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnAtender = new javax.swing.JButton();
@@ -80,20 +81,20 @@ public class ConsRojo extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 470, 340));
 
-        jButton1.setText("Menú");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setText("Menú");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Consultorios Rojos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
 
         jLabel2.setText("Seleccione el consultorio");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
 
         btnAtender.setText("Atender");
         btnAtender.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +102,7 @@ public class ConsRojo extends javax.swing.JFrame {
                 btnAtenderActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, -1, -1));
+        getContentPane().add(btnAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, -1, -1));
 
         btnLiberarAtender.setText("Liberar y Antender");
         btnLiberarAtender.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +110,7 @@ public class ConsRojo extends javax.swing.JFrame {
                 btnLiberarAtenderActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLiberarAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
+        getContentPane().add(btnLiberarAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,50 +159,19 @@ public class ConsRojo extends javax.swing.JFrame {
          }else{JOptionPane.showMessageDialog(null, "No hay paciente en consultorio para liberar");}
     }//GEN-LAST:event_btnLiberarAtenderActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsRojo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsRojo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsRojo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsRojo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new ConsRojo().setVisible(true);
-            }
-        });
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtender;
     private javax.swing.JButton btnLiberarAtender;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;

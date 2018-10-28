@@ -18,6 +18,8 @@ public class ConsAmarillo extends javax.swing.JFrame {
     int dato = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getCantTotalConsultorios();
     
     public ConsAmarillo() {
+        initComponents();
+        this.setLocationRelativeTo(null);
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");

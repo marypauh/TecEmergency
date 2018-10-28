@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package Interfaz;
-import Interfaz.Ingresos;
-import Interfaz.Urgencias;
+
 
 /**
  *
@@ -123,7 +122,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresosActionPerformed
 
     private void btnEgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEgresosActionPerformed
-        // TODO add your handling code here:
+       Egresos egresos = new Egresos();
+       egresos.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_btnEgresosActionPerformed
 
     private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
@@ -131,9 +132,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdministradorActionPerformed
 
     private void btnEmergenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmergenciasActionPerformed
-        this.setVisible(false);
         ConsRojo a = new ConsRojo();
         a.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnEmergenciasActionPerformed
 
     /**

@@ -10,6 +10,7 @@ import Estructura.ListaConsultorios;
 import Interfaz.Inicio;
 import modelo.enums.CategoriasEstructura;
 import ServicioEmergencia.ServicioConsultorios;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -182,9 +184,11 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        Inicio inicio = new Inicio();
-        inicio.setVisible(true);
-        this.setVisible(false);
+       
+        if (this.txtVerde.getText().isEmpty() || this.txtAmarillo.getText().isEmpty() || this.txtRojo.getText().isEmpty() || this.txtMinEgresos.getText().isEmpty() || this.txtMaxEgresos.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
+       }
+        else {
         
         ServicioEmergencia.Filas.filaRoja = new FilaPacientes(comboRojo1.getSelectedItem().toString());
         ServicioEmergencia.Filas.filaAmarilla  = new FilaPacientes(comboAmarillo.getSelectedItem().toString());
@@ -199,6 +203,11 @@ public class Principal extends javax.swing.JFrame {
         
         System.out.print(comboVerde.getSelectedItem().toString());
         //System.out.println(ServicioEmergencia.ServicioConsultorios.consultoriosVerdes);
+        
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
+        this.setVisible(false);
+        }
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**

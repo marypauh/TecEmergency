@@ -66,7 +66,6 @@ public class Ingresos extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,13 +120,6 @@ public class Ingresos extends javax.swing.JFrame {
             }
         });
 
-        btnMenu.setText("Menu");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -135,17 +127,13 @@ public class Ingresos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(217, Short.MAX_VALUE)
                 .addComponent(btnAgregar)
-                .addGap(66, 66, 66)
-                .addComponent(btnMenu)
-                .addGap(23, 23, 23))
+                .addGap(160, 160, 160))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(445, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnMenu))
+                .addComponent(btnAgregar)
                 .addContainerGap())
         );
 
@@ -209,19 +197,11 @@ public class Ingresos extends javax.swing.JFrame {
         }
         //ServicioEmergencia.Sendsms.sendSMS(nombre + " se le ha asignado la ficha " + ficha, telefono);
         JOptionPane.showMessageDialog(null, "Se ha enviado un mensaje de texto con la ficha asignada");
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-         Inicio menu = new Inicio();
-        menu.setVisible(true);
+        
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
         this.setVisible(false);
-        
-        ConsVerde newe = new ConsVerde();
-        newe.setVisible(true);
-        ConsAmarillo nueva = new ConsAmarillo();
-        nueva.setVisible(true);
-        
-    }//GEN-LAST:event_btnMenuActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,7 +212,6 @@ public class Ingresos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboPadecimiento;
     private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDetalle;
