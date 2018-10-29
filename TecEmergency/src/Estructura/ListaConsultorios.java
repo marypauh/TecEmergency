@@ -27,10 +27,15 @@ public class ListaConsultorios {
     }
     
     public void setCantConsultoriosActivos( int cantActivos) {
-        //precondición. Los consultorios que se van a desactivar deben estar desocupados.
-        if (cantActivos <= cantTotalConsultorios) {
-            cantConsultoriosActivos = cantActivos;
+        cantConsultoriosActivos = cantActivos;
+        
+        for (int i = cantActivos+1; i <= cantTotalConsultorios;i++){
+            Pacientes paciente = consultorios[i].getPacienteAtendiendo();
+            if (paciente != null){ ServicioEmergencia.Filas.filaEgresos.insertPaciente(paciente);}
+            consultorios[i].setActivo("Inactivo");
+            consultorios[i].setEstado("Libre");
         }
+
     }
 
     public Consultorios[] getConsultorios() {

@@ -5,17 +5,55 @@
  */
 package Interfaz;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author marip
  */
 public class MostrarEstado extends javax.swing.JFrame {
+        int datoVerde = ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getCantTotalConsultorios();
+        int datoAmarillo = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getCantTotalConsultorios();
+        int datoRojo = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getCantTotalConsultorios();
+        
+        
+        
 
     /**
      * Creates new form MostrarEstado
      */
     public MostrarEstado() {
         initComponents();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
+        modelo.addColumn("Activo o inactivo");
+        for(int i = 1;i<=datoVerde;i++){
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado(), 
+            ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getActivo()});
+        }
+        tableVerdes.setModel(modelo);
+        
+        DefaultTableModel modelo1 = new DefaultTableModel();
+        modelo1.addColumn("Numero del consultorio");
+        modelo1.addColumn("Condicion del consultorio");
+        modelo1.addColumn("Activo o inactivo");
+        for(int i = 1;i<=datoAmarillo;i++){
+            modelo1.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado(), 
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getActivo()});
+        }
+        tableAmarillos.setModel(modelo1);
+        
+        DefaultTableModel modelo2 = new DefaultTableModel();
+        modelo2.addColumn("Numero del consultorio");
+        modelo2.addColumn("Condicion del consultorio");
+        modelo2.addColumn("Activo o inactivo");
+        for(int i = 1;i<=datoRojo;i++){
+            modelo2.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado(), 
+            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getActivo()});
+        }
+        tableRojos.setModel(modelo2);
+        
     }
 
     /**
@@ -28,11 +66,11 @@ public class MostrarEstado extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableVerdes = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableAmarillos = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tableRojos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,7 +78,7 @@ public class MostrarEstado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableVerdes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -51,9 +89,9 @@ public class MostrarEstado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableVerdes);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableAmarillos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,9 +102,9 @@ public class MostrarEstado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableAmarillos);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tableRojos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -77,7 +115,7 @@ public class MostrarEstado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tableRojos);
 
         jLabel1.setText("Amarillos");
 
@@ -158,6 +196,9 @@ public class MostrarEstado extends javax.swing.JFrame {
         Gestion gest = new Gestion();
         gest.setVisible(true);
         this.setVisible(false);
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -173,8 +214,8 @@ public class MostrarEstado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable tableAmarillos;
+    private javax.swing.JTable tableRojos;
+    private javax.swing.JTable tableVerdes;
     // End of variables declaration//GEN-END:variables
 }

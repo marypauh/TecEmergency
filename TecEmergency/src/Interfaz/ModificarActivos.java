@@ -35,8 +35,8 @@ public class ModificarActivos extends javax.swing.JFrame {
         txtVerdes = new javax.swing.JTextField();
         txtAmarillos = new javax.swing.JTextField();
         txtRojos = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
         txtEgresos = new javax.swing.JTextField();
@@ -49,22 +49,22 @@ public class ModificarActivos extends javax.swing.JFrame {
 
         lbl1.setText("Rojos");
 
-        jButton1.setText("Continuar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnContinuarActionPerformed(evt);
             }
         });
 
-        jButton2.setMnemonic('M');
-        jButton2.setText("Menu");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setMnemonic('M');
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Consultorios que quedarán activos");
+        jLabel1.setText("Consultorios/Puestos de atención que quedarán activos");
 
         lbl2.setText("Egresos");
 
@@ -76,14 +76,14 @@ public class ModificarActivos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(89, 89, 89)
-                                .addComponent(jButton1)
+                                .addComponent(btnContinuar)
                                 .addGap(34, 34, 34)
-                                .addComponent(jButton2))
+                                .addComponent(btnMenu))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(118, 118, 118)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,34 +130,53 @@ public class ModificarActivos extends javax.swing.JFrame {
                     .addComponent(txtEgresos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnContinuar)
+                    .addComponent(btnMenu))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        JOptionPane.showMessageDialog(null, "Se liberarán todos los pacientes en los consultorios a desactivar");
         if (this.txtVerdes.getText().isEmpty() == false) {
-        
-            
-        }  if (this.txtAmarillos.getText().isEmpty() == false) {
-        
+           int verdes = Integer.parseInt(txtVerdes.getText());
+            if (verdes <= ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getCantTotalConsultorios()){
+                ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.setCantConsultoriosActivos(verdes);
+                JOptionPane.showMessageDialog(null, "Se han desactivado exitosamente los consultorios Verdes");
+            }else{JOptionPane.showMessageDialog(null, "La cantidad de consultorios verdes que quedaran activos no puede ser mayor a las cantidad"
+                    + "total de consultorios");}
+       if (this.txtAmarillos.getText().isEmpty() == false) {
+           int amarillos = Integer.parseInt(txtAmarillos.getText());
+            if (amarillos <= ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getCantTotalConsultorios()){
+                ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.setCantConsultoriosActivos(amarillos);
+                 JOptionPane.showMessageDialog(null, "Se han desactivado exitosamente los consultorios Amarillos");
+            }else{JOptionPane.showMessageDialog(null, "La cantidad de consultorios amarillos que quedaran activos no puede ser mayor a las cantidad"
+                    + " total de consultorios");}
             
         } if (this.txtRojos.getText().isEmpty() == false ) {
-            
-            
-        } else if (this.txtEgresos.getText().isEmpty() == false){
-        
+            int rojo = Integer.parseInt(txtRojos.getText());
+            if (rojo <= ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getCantTotalConsultorios()){
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.setCantConsultoriosActivos(rojo);
+                 JOptionPane.showMessageDialog(null, "Se han desactivado exitosamente los consultorios Rojos");
+            }else{JOptionPane.showMessageDialog(null, "La cantidad de consultorios rojos que quedaran activos no puede ser mayor a las cantidad"
+                    + "total de consultorios");}
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        } else if (this.txtEgresos.getText().isEmpty() == false){
+            if (Integer.parseInt(txtEgresos.getText()) <= ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getCantTotalConsultorios()){
+                ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.setCantConsultoriosActivos(Integer.parseInt(txtEgresos.getText()));
+                 JOptionPane.showMessageDialog(null, "Se han desactivado exitosamente los puestos de Egresos");
+            }else{JOptionPane.showMessageDialog(null, "La cantidad de puestos de atencion que quedaran activos no puede ser mayor a las cantidad"
+                    + "total de consultorios");}
+        }
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         Gestion menu = new Gestion();
         menu.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,8 +184,8 @@ public class ModificarActivos extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl;
     private javax.swing.JLabel lbl1;
