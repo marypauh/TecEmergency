@@ -200,6 +200,9 @@ public class Principal extends javax.swing.JFrame {
         ServicioEmergencia.Filas.filaVerde = new FilaPacientes(comboVerde.getSelectedItem().toString());
         ServicioEmergencia.Filas.filaEgresos  = new FilaPacientes(comboEgresos.getSelectedItem().toString());
         
+        ServicioEmergencia.Filas.maxEgresos = Integer.parseInt(txtMaxEgresos.getText());
+        ServicioEmergencia.Filas.minEgresos = Integer.parseInt(txtMinEgresos.getText());
+        
         ServicioEmergencia.ServicioConsultorios.consultoriosRojos = new ListaConsultorios("ROJO",Integer.parseInt(txtRojo.getText()));
         ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos = new ListaConsultorios("AMARILLO",Integer.parseInt(txtAmarillo.getText()));
         ServicioEmergencia.ServicioConsultorios.consultoriosVerdes = new ListaConsultorios("VERDE",Integer.parseInt(txtVerde.getText()));

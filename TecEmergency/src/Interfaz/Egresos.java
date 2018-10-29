@@ -8,6 +8,7 @@ package Interfaz;
 import Estructura.Pacientes;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.Random;
 
 /**
  *
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Egresos extends javax.swing.JFrame {
     
-    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getCantTotalConsultorios();
+    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getCantConsultoriosActivos();
 
     /**
      * Creates new form Egresos
@@ -33,13 +34,13 @@ public class Egresos extends javax.swing.JFrame {
     }
     public void actualizarTabla(){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Numero del consultorio");
-        modelo.addColumn("Condicion del consultorio");
-        initComponents();
+        modelo.addColumn("Numero del puesto de atencion");
+        modelo.addColumn("Condicion del puesto de atención");
         for(int i = 1;i<=dato;i++){
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[i].getEstado()});
         }
         tabla_egresos.setModel(modelo);
+        modelo.fireTableDataChanged();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,18 +144,22 @@ public class Egresos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
+        double random = (Math.random() * (ServicioEmergencia.Filas.maxEgresos - ServicioEmergencia.Filas.minEgresos) 
+                + ServicioEmergencia.Filas.minEgresos);
+        
         DefaultTableModel model = (DefaultTableModel)tabla_egresos.getModel();
         int indice = tabla_egresos.getSelectedRow();//para obtener la fila seleccionada
         indice++;
         Pacientes paciente = ServicioEmergencia.Filas.filaEgresos.nextPaciente();
-        if (paciente == null){//falta ver como validar
-            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+        if ((paciente == null) || ( ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].getEstado() == "Ocupado")){//falta ver como validar
+            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender o el puesto no esta libre");
         }else{
             //hacer hora salida
             //duracion
             ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].atenderSigPaciente(paciente);
             ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Ocupado");
-            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en puesto de atención #" + indice );
+            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en puesto #" + indice + ". Su tiempo en la fila de espera"
+                    + "fue de "+ random + " segundos");
         }
         actualizarTabla();
     }//GEN-LAST:event_btnAtenderActionPerformed
@@ -163,8 +168,8 @@ public class Egresos extends javax.swing.JFrame {
         int indice = tabla_egresos.getSelectedRow();//para obtener la fila seleccionada
         indice++;
         Pacientes pacienteAlta = ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].getPacienteAtendiendo();
-        ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Ocupado");
-        JOptionPane.showMessageDialog(null, "Encuesta de servicio para le paciente " + pacienteAlta.getFicha());
+        ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Libre");
+        JOptionPane.showMessageDialog(null, "Encuesta de servicio para el paciente " + pacienteAlta.getFicha());
         actualizarTabla();
     }//GEN-LAST:event_btnReleaseActionPerformed
 

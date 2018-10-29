@@ -16,5 +16,5 @@ public class Filas {
     public static FilaPacientes filaAmarilla;
     public static FilaPacientes filaVerde;
     public static FilaPacientes filaEgresos;
-    
+    public static int maxEgresos, minEgresos;
 }

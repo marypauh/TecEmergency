@@ -162,6 +162,7 @@ public class Ingresos extends javax.swing.JFrame {
        CategoriasPadecimientos categoria;
        CategoriasColor color1;
        
+       
        nombre = txtNombre.getText();
        fecha = txtFecha.getText();
        telefono = txtTelefono.getText();
@@ -189,8 +190,7 @@ public class Ingresos extends javax.swing.JFrame {
             
         }else{
             ficha = "R-" +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
-            Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
-            paciente.setColor("ROJO");
+            Pacientes paciente = new Pacientes(ficha,"ROJO", padecimiento,horaEntrada, null);
             paciente.setFicha(ficha);
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
             JOptionPane.showMessageDialog(null, "Por aleatoriedad, el paciente ha pasado de " + color + " a ROJO. con la ficha " + ficha);

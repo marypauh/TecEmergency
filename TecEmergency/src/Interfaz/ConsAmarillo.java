@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsAmarillo extends javax.swing.JFrame {
     
-    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getCantTotalConsultorios();
+    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getCantConsultoriosActivos();
     
     public ConsAmarillo() {
         initComponents();
@@ -32,11 +32,11 @@ public class ConsAmarillo extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
-        initComponents();
         for(int i = 1;i<=dato;i++){
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado()});
         }
         tabla_amarillos.setModel(modelo);
+        modelo.fireTableDataChanged();
     }
 
     /**
@@ -151,19 +151,21 @@ public class ConsAmarillo extends javax.swing.JFrame {
         int indice = tabla_amarillos.getSelectedRow();//para obtener la fila seleccionada
         indice++; //aumentamos en 1 por que el arreglo empieza en 0
         Pacientes sigPaciente = ServicioEmergencia.Filas.filaAmarilla.nextPaciente();
-        Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getPacienteAtendiendo();
+        if (ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getEstado() == "Ocupado"){
+            Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getPacienteAtendiendo();
             ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
             JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
-        if (sigPaciente == null) {//falta ver como validar
-            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Libre");
-            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
-        }else{
+            if (sigPaciente == null) {//falta ver como validar
+                ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Libre");
+                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+            }else{
             //hacer hora salida
             //duracion
-            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].atenderSigPaciente(sigPaciente);
-            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Ocupado");
-            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + sigPaciente.getFicha() + "en consultorio #" + indice );
+                ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].atenderSigPaciente(sigPaciente);
+                ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Ocupado");
+                JOptionPane.showMessageDialog(null, "Atendiendo paciente " + sigPaciente.getFicha() + "en consultorio #" + indice );
         }
+        }else{JOptionPane.showMessageDialog(null, "Presiona Atender" );}
         actualizarTabla();
     }//GEN-LAST:event_btnLiberarAtenderActionPerformed
 

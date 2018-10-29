@@ -48,6 +48,22 @@ public class ListaConsultorios {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public int getCantConsultoriosActivos() {
+        return cantConsultoriosActivos;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
+    }
+
+    public void setCantTotalConsultorios(int cantTotalConsultorios) {
+        this.cantTotalConsultorios = cantTotalConsultorios;
+    }
+
+    public void setConsultorios(Consultorios[] consultorios) {
+        this.consultorios = consultorios;
+    }
     
     
     @Override

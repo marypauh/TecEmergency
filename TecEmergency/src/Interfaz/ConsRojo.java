@@ -15,12 +15,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsRojo extends javax.swing.JFrame {
     
-    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getCantTotalConsultorios();
+    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getCantConsultoriosActivos();
     
     public ConsRojo() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
@@ -34,12 +33,11 @@ public class ConsRojo extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
-        initComponents();
         for(int i = 1;i<=dato;i++){
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado()});
         }
-        //tabla_rojos.setModel(modelo);
-        //this.setLocationRelativeTo(null);
+        tabla_rojos.setModel(modelo);
+        modelo.fireTableDataChanged();
     }
 
     /**
@@ -118,42 +116,40 @@ public class ConsRojo extends javax.swing.JFrame {
     private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
         DefaultTableModel model = (DefaultTableModel)tabla_rojos.getModel();
         int indice = tabla_rojos.getSelectedRow();//para obtener la fila seleccionada
-        indice++; //aumentamos en 1 por que el arreglo empieza en 0
-        if (ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getEstado() == "Libre"){
-            Pacientes paciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
-            if (paciente == null){//falta ver como validar
-                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
-            }else{
-                //hacer hora salida
-                //duracion
-                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].atenderSigPaciente(paciente);
-                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Ocupado");
-                JOptionPane.showMessageDialog(null, "Atendiendo paciente" + paciente.getFicha() + "en consultorio #" + indice );
-            }
+        indice++;
+        Pacientes paciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
+        if ((paciente == null) || ( ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getEstado() == "Ocupado")){//falta ver como validar
+            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender o el consultorio no esta libre");
         }else{
-            JOptionPane.showMessageDialog(null, "El consultorio no esta libre");
+            //hacer hora salida
+            //duracion
+            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].atenderSigPaciente(paciente);
+            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Ocupado");
+            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en consultorio #" + indice );
         }
         actualizarTabla();
     }//GEN-LAST:event_btnAtenderActionPerformed
 
     private void btnLiberarAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarAtenderActionPerformed
-        DefaultTableModel model = (DefaultTableModel)tabla_rojos.getModel();
+                DefaultTableModel model = (DefaultTableModel)tabla_rojos.getModel();
         int indice = tabla_rojos.getSelectedRow();//para obtener la fila seleccionada
         indice++; //aumentamos en 1 por que el arreglo empieza en 0
         Pacientes sigPaciente = ServicioEmergencia.Filas.filaRoja.nextPaciente();
-        Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getPacienteAtendiendo();
-        ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
-        JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
-        if (sigPaciente == null) {//falta ver como validar
-            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Libre");
-            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
-        }else{
+        if (ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getEstado() == "Ocupado"){
+            Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getPacienteAtendiendo();
+            ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
+            JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
+            if (sigPaciente == null) {//falta ver como validar
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Libre");
+                JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+            }else{
             //hacer hora salida
             //duracion
-            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].atenderSigPaciente(sigPaciente);
-            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Ocupado");
-            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + sigPaciente.getFicha() + "en consultorio #" + indice );
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].atenderSigPaciente(sigPaciente);
+                ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Ocupado");
+                JOptionPane.showMessageDialog(null, "Atendiendo paciente " + sigPaciente.getFicha() + "en consultorio #" + indice );
         }
+        }else{JOptionPane.showMessageDialog(null, "Presiona Atender" );}
         actualizarTabla();
     }//GEN-LAST:event_btnLiberarAtenderActionPerformed
 
