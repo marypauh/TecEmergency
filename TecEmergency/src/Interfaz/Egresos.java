@@ -5,20 +5,42 @@
  */
 package Interfaz;
 
+import Estructura.Pacientes;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author marip
  */
 public class Egresos extends javax.swing.JFrame {
+    
+    int dato = ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getCantTotalConsultorios();
 
     /**
      * Creates new form Egresos
      */
     public Egresos() {
-        initComponents();
+       initComponents();
         this.setLocationRelativeTo(null);
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Numero del puesto de atencion");
+        modelo.addColumn("Condicion del puesto de atención");
+        for(int i = 1;i<=dato;i++){
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[i].getEstado()});
+        }
+        tabla_egresos.setModel(modelo);
     }
-
+    public void actualizarTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Numero del consultorio");
+        modelo.addColumn("Condicion del consultorio");
+        initComponents();
+        for(int i = 1;i<=dato;i++){
+            modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[i].getEstado()});
+        }
+        tabla_egresos.setModel(modelo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +55,7 @@ public class Egresos extends javax.swing.JFrame {
         tabla_egresos = new javax.swing.JTable();
         btnRelease = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
+        btnAtender = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,11 +76,23 @@ public class Egresos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabla_egresos);
 
         btnRelease.setText("Dar de alta");
+        btnRelease.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReleaseActionPerformed(evt);
+            }
+        });
 
         btnMenu.setText("Menu");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
+            }
+        });
+
+        btnAtender.setText("Atender ");
+        btnAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtenderActionPerformed(evt);
             }
         });
 
@@ -75,9 +110,11 @@ public class Egresos extends javax.swing.JFrame {
                             .addGap(50, 50, 50)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnAtender)
+                        .addGap(18, 18, 18)
                         .addComponent(btnRelease)
-                        .addGap(91, 91, 91)
+                        .addGap(42, 42, 42)
                         .addComponent(btnMenu)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -91,7 +128,8 @@ public class Egresos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRelease)
-                    .addComponent(btnMenu))
+                    .addComponent(btnMenu)
+                    .addComponent(btnAtender))
                 .addContainerGap())
         );
 
@@ -104,12 +142,45 @@ public class Egresos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tabla_egresos.getModel();
+        int indice = tabla_egresos.getSelectedRow();//para obtener la fila seleccionada
+        indice++;
+        Pacientes paciente = ServicioEmergencia.Filas.filaEgresos.nextPaciente();
+        if (paciente == null){//falta ver como validar
+            JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
+        }else{
+            //hacer hora salida
+            //duracion
+            ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].atenderSigPaciente(paciente);
+            ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Ocupado");
+            JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en puesto de atención #" + indice );
+        }
+        actualizarTabla();
+    }//GEN-LAST:event_btnAtenderActionPerformed
+
+    private void btnReleaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReleaseActionPerformed
+        int indice = tabla_egresos.getSelectedRow();//para obtener la fila seleccionada
+        indice++;
+        Pacientes pacienteAlta = ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].getPacienteAtendiendo();
+        if (pacienteAlta == null){//falta ver como validar
+            JOptionPane.showMessageDialog(null, "No hay pacientes en ese puesto de atención");
+        }else{
+            Pacientes paciente = ServicioEmergencia.Filas.filaEgresos.nextPaciente();
+            ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].atenderSigPaciente(paciente);
+            ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Ocupado");
+            JOptionPane.showMessageDialog(null, "Encuesta de servicio para le paciente " + pacienteAlta.getFicha());
+        }
+        actualizarTabla();
+    }//GEN-LAST:event_btnReleaseActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtender;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnRelease;
     private javax.swing.JScrollPane jScrollPane1;

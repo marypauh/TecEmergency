@@ -77,6 +77,8 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtEgresos" min="-2" pref="58" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="comboRojo1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -119,6 +121,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="comboRojo1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEgresos" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -250,6 +253,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMaxEgresos">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtEgresos">
     </Component>
   </SubComponents>
 </Form>

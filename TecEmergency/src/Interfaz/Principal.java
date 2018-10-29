@@ -53,6 +53,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtMaxEgresos = new javax.swing.JTextField();
+        txtEgresos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +137,8 @@ public class Principal extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtEgresos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
                                     .addComponent(comboRojo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -166,7 +169,8 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboRojo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(txtEgresos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -185,7 +189,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
        
-        if (this.txtVerde.getText().isEmpty() || this.txtAmarillo.getText().isEmpty() || this.txtRojo.getText().isEmpty() || this.txtMinEgresos.getText().isEmpty() || this.txtMaxEgresos.getText().isEmpty()){
+        if (this.txtVerde.getText().isEmpty() || this.txtAmarillo.getText().isEmpty() || this.txtRojo.getText().isEmpty() || this.txtMinEgresos.getText().isEmpty() ||
+                this.txtMaxEgresos.getText().isEmpty() || this.txtEgresos.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Llene todos los campos");
        }
         else {
@@ -198,11 +203,7 @@ public class Principal extends javax.swing.JFrame {
         ServicioEmergencia.ServicioConsultorios.consultoriosRojos = new ListaConsultorios("ROJO",Integer.parseInt(txtRojo.getText()));
         ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos = new ListaConsultorios("AMARILLO",Integer.parseInt(txtAmarillo.getText()));
         ServicioEmergencia.ServicioConsultorios.consultoriosVerdes = new ListaConsultorios("VERDE",Integer.parseInt(txtVerde.getText()));
-        ServicioEmergencia.ServicioConsultorios.consultoriosEgresos = new ListaConsultorios("EGRESOS",1);
-        
-        
-        System.out.print(comboVerde.getSelectedItem().toString());
-        //System.out.println(ServicioEmergencia.ServicioConsultorios.consultoriosVerdes);
+        ServicioEmergencia.ServicioConsultorios.consultoriosEgresos = new ListaConsultorios("EGRESOS",Integer.parseInt(txtEgresos.getText()));
         
         Inicio inicio = new Inicio();
         inicio.setVisible(true);
@@ -230,6 +231,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblVerde;
     private javax.swing.JTextField txtAmarillo;
+    private javax.swing.JTextField txtEgresos;
     private javax.swing.JTextField txtMaxEgresos;
     private javax.swing.JTextField txtMinEgresos;
     private javax.swing.JTextField txtRojo;
