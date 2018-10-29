@@ -36,7 +36,6 @@ public class Inicio extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnAdministrador = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -103,17 +102,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnAdministradorActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(204, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Gestión de Consultorios");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, -1, -1));
+        jPanel1.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 480));
 
@@ -123,6 +112,7 @@ public class Inicio extends javax.swing.JFrame {
     private void btnIngresosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosMouseClicked
        Ingresos ingreso = new Ingresos();
        ingreso.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_btnIngresosMouseClicked
 
     private void btnUrgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUrgenciasActionPerformed
@@ -153,12 +143,6 @@ public class Inicio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnEmergenciasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Gestion gestion = new Gestion();
-        gestion.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -170,7 +154,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnEmergencias;
     private javax.swing.JButton btnIngresos;
     private javax.swing.JButton btnUrgencias;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFondo;
     // End of variables declaration//GEN-END:variables

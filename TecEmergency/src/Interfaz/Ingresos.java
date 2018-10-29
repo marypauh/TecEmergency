@@ -31,8 +31,12 @@ import javax.swing.JOptionPane;
  */
 public class Ingresos extends javax.swing.JFrame {
 
-    Date hora = new Date();
+   public static Calendar horaEntrada ;
     public static int contadorP = 0;
+    public static int FichasV = 0;
+    public static int FichasA = 0;
+    public static int FichasR = 0;
+    
     
     /**
      * Creates new form Ingresos
@@ -150,11 +154,7 @@ public class Ingresos extends javax.swing.JFrame {
         Double random = rnd.nextDouble();
         System.out.println("Número aleatorio entre [0,1[ : "+ random);
         
-          //Obtiene fecha y hora del sistema
-                Calendar fecha1 = Calendar.getInstance();
-		fecha1.setTime(new Date());
-               Date horaEntrada = fecha1.getTime();
-               System.out.println("Hora Entrada: " + horaEntrada);
+          
      
        String nombre, fecha, telefono, detalle, color;
        String padecimiento;
@@ -173,6 +173,13 @@ public class Ingresos extends javax.swing.JFrame {
        Ingresos.contadorP++;
        color = ComboTipo.getSelectedItem().toString();
        
+       //Obtiene fecha y hora del sistema
+               horaEntrada = Calendar.getInstance();
+		horaEntrada.setTime(new Date());
+              Date hora = horaEntrada.getTime();
+               System.out.println("Hora Entrada: " + hora);
+               
+       
        //System.out.print(padecimiento);
        //System.out.print(CategoriasColor.valueOf(ComboTipo.getSelectedItem()).toString());
                
@@ -181,8 +188,10 @@ public class Ingresos extends javax.swing.JFrame {
             ficha = color1.getCodigoCategoria() + "-" +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
             Pacientes paciente = new Pacientes(ficha,color, padecimiento,horaEntrada, null);
             if (("VERDE").equals(color)){
+                FichasV ++;
                 ServicioEmergencia.Filas.filaVerde.insertPaciente(paciente);
             }if (("AMARILLO").equals(color)){
+                FichasA++;
                 ServicioEmergencia.Filas.filaAmarilla.insertPaciente(paciente);
             }
             paciente.setFicha(ficha);
@@ -191,6 +200,7 @@ public class Ingresos extends javax.swing.JFrame {
         }else{
             ficha = "R-" +categoria.getCodigoCategoria() + "-" + Ingresos.contadorP;
             Pacientes paciente = new Pacientes(ficha,"ROJO", padecimiento,horaEntrada, null);
+            FichasR++;
             paciente.setFicha(ficha);
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
             JOptionPane.showMessageDialog(null, "Por aleatoriedad, el paciente ha pasado de " + color + " a ROJO. con la ficha " + ficha);

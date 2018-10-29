@@ -1,5 +1,6 @@
 package Estructura;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Pacientes {
@@ -7,11 +8,11 @@ public class Pacientes {
     String ficha;
     String color;
     String padecimiento;
-    Date horaEntrada;
-    Date horaSalida;
+    Calendar horaEntrada;
+    Calendar horaSalida;
     
     
-    public Pacientes(String ficha,String color, String padecimiento, Date horaEntrada,  Date horaSalida){
+    public Pacientes(String ficha,String color, String padecimiento, Calendar horaEntrada,  Calendar horaSalida){
         this.prioridad = setPrioridad(color, padecimiento);
         this.ficha = ficha;
         this.color = color;
@@ -43,16 +44,16 @@ public class Pacientes {
     public void setFicha(String ficha) {
         this.ficha = ficha;
     }
-     public Date getHoraEntrada() {
+     public Calendar getHoraEntrada() {
         return horaEntrada;
     }
-    public void setHoraEntrada(Date horaEntrada) {
+    public void setHoraEntrada(Calendar horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
-    public Date getHoraSalida() {
+    public Calendar getHoraSalida() {
         return horaSalida;
     }
-    public void setHoraSalida(Date horaSalida) {
+    public void setHoraSalida(Calendar horaSalida) {
         this.horaSalida = horaSalida;
     }
 

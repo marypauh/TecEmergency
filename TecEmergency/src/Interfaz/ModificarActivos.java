@@ -173,7 +173,7 @@ public class ModificarActivos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Gestion menu = new Gestion();
+        Administracion menu = new Administracion();
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed

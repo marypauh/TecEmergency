@@ -193,8 +193,8 @@ public class MostrarEstado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Gestion gest = new Gestion();
-        gest.setVisible(true);
+      Administracion menu = new Administracion();
+        menu.setVisible(true);
         this.setVisible(false);
         
         

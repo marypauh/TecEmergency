@@ -10,15 +10,23 @@ import Estructura.Consultorios;
 import Estructura.Pacientes;
 import ServicioEmergencia.ServicioConsultorios;
 import javax.swing.JOptionPane;
+import java.util.Calendar;
+import javax.swing.table.DefaultTableModel;
+import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
 
 public class ConsVerde extends javax.swing.JFrame {
+      public static Calendar horaSalida;
+    public static int promedioV;
+    public static int contadorV;
     
     int dato = ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getCantConsultoriosActivos();
     
     public ConsVerde() {
+        promedioV = 0;
+        contadorV = 0;
         initComponents();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
@@ -160,8 +168,35 @@ public class ConsVerde extends javax.swing.JFrame {
         if ((paciente == null) || ( ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].getEstado() == "Ocupado")){//falta ver como validar
             JOptionPane.showMessageDialog(null, "No hay más pacientes por atender o el consultorio no esta libre");
         }else{
-            //hacer hora salida
-            //duracion
+         
+             //Hora Salida
+                horaSalida = Calendar.getInstance();
+		horaSalida.setTime(new Date());
+              paciente.setHoraSalida(horaSalida);
+              System.out.println("Hora Salida" + horaSalida.getTime());
+               
+              //Cuenta el nuevo paciente
+               contadorV++;
+           
+           //Duracion
+           Calendar horaEntrada = paciente.getHoraEntrada();
+           System.out.println("Hora Entrada" + horaEntrada.getTime());
+           
+           int hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
+               int minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
+               int segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               
+               System.out.println("Hora " + hora + "minutos: " + minutos + "segundos: " + segundos);
+               
+              minutos = minutos + (hora*60);
+           
+             int promedio = Math.abs(segundos);
+              promedio = promedio + (minutos*60);
+              System.out.println("Total: " + promedio);
+              
+              promedioV = promedioV + promedio;
+            
+            
             ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].atenderSigPaciente(paciente);
             ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].setEstado("Ocupado");
             JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en consultorio #" + indice );
@@ -182,8 +217,36 @@ public class ConsVerde extends javax.swing.JFrame {
                 ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].setEstado("Libre");
                 JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
             }else{
-            //hacer hora salida
-            //duracion
+            
+                //Hora Salida
+                horaSalida = Calendar.getInstance();
+		horaSalida.setTime(new Date());
+              pacienteEgresos.setHoraSalida(horaSalida);
+              System.out.println("Hora Salida" + horaSalida.getTime());
+               
+              //Cuenta el nuevo paciente
+               contadorV++;
+           
+           //Duracion
+           Calendar horaEntrada = pacienteEgresos.getHoraEntrada();
+           System.out.println("Hora Entrada" + horaEntrada.getTime());
+           
+           int hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
+               int minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
+               int segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               
+               System.out.println("Hora " + hora + "minutos: " + minutos + "segundos: " + segundos);
+               
+              minutos = minutos + (hora*60);
+           
+             int promedio = Math.abs(segundos);
+              promedio = promedio + (minutos*60);
+              
+              System.out.println("total " + promedio);
+              
+              promedioV = promedioV + promedio;
+            
+                
                 ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].atenderSigPaciente(sigPaciente);
                 ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].setEstado("Ocupado");
                 JOptionPane.showMessageDialog(null, "Atendiendo paciente " + sigPaciente.getFicha() + "en consultorio #" + indice );

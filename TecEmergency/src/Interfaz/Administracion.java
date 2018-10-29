@@ -7,6 +7,7 @@ package Interfaz;
 
 import Estructura.FilaPacientes;
 import Estructura.ListaConsultorios;
+import static Interfaz.Ingresos.FichasV;
 import Interfaz.Inicio;
 import modelo.enums.CategoriasEstructura;
 import ServicioEmergencia.ServicioConsultorios;
@@ -17,15 +18,40 @@ import javax.swing.JOptionPane;
  * @author marip
  */
 public class Administracion extends javax.swing.JFrame {
-
+        int FichasV, FichasA, FichasR, PromedioA, PromedioV,PromedioR;
+        
     /**
      * Creates new form Principal
      */
     public Administracion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        //total pacientes
+        FichasV = Ingresos.FichasV;
+        FichasA = Ingresos.FichasA;
+        FichasR = Ingresos.FichasR;
+       
+        lblVerdes.setText("" + FichasV);
+        lblAmarillos.setText("" + FichasA);
+        lblRojos.setText("" + FichasR);
+        
+        //Promedio Consultorios
+        PromedioA = ConsAmarillo.promedioA / ConsAmarillo.contadorA;
+        PromedioV = ConsVerde.promedioV / ConsVerde.contadorV;
+        PromedioR = ConsRojo.promedioR / ConsRojo.contadorR;
+        
+        lblPA.setText("" + PromedioA);
+        lblPV.setText("" + PromedioV);
+        lblPR.setText("" + PromedioR);
+        
+        
+        
+        
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,140 +64,142 @@ public class Administracion extends javax.swing.JFrame {
         lblVerde = new javax.swing.JLabel();
         lblAmarillo = new javax.swing.JLabel();
         lblRojo = new javax.swing.JLabel();
-        txtVerde = new javax.swing.JTextField();
-        txtAmarillo = new javax.swing.JTextField();
-        txtEgresos = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnMenu = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txtTipoV = new javax.swing.JTextField();
-        txtTipoA = new javax.swing.JTextField();
-        txtTipoR = new javax.swing.JTextField();
-        txtTipoE = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtRojo = new javax.swing.JTextField();
+        btnActivos = new javax.swing.JButton();
+        btnEstado = new javax.swing.JButton();
+        lblR = new javax.swing.JLabel();
+        lblRojos = new javax.swing.JLabel();
+        lblV = new javax.swing.JLabel();
+        lblVerdes = new javax.swing.JLabel();
+        lblA = new javax.swing.JLabel();
+        lblAmarillos = new javax.swing.JLabel();
+        gf = new javax.swing.JLabel();
+        gf1 = new javax.swing.JLabel();
+        gf2 = new javax.swing.JLabel();
+        lblPV = new javax.swing.JLabel();
+        lblPR = new javax.swing.JLabel();
+        gf3 = new javax.swing.JLabel();
+        lblPA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblVerde.setText("Consultorios Verdes:");
+        getContentPane().add(lblVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, 40));
 
         lblAmarillo.setText("Consultorios Amarillos:");
+        getContentPane().add(lblAmarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         lblRojo.setText("Consultorios Rojos:");
+        getContentPane().add(lblRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
 
         lblTitulo.setText("Administración");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 22, -1, -1));
 
         jLabel1.setText("Promedio Egresos:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 454, -1, -1));
 
         btnMenu.setText("Menu");
-
-        jLabel5.setText("Tipo:");
-
-        txtTipoA.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoAActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
+
+        jLabel5.setText("Tipo:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, -1, -1));
 
         jLabel6.setText("Tipo:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
 
         jLabel7.setText("Tipo:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 454, -1, -1));
 
         jLabel8.setText("Tipo:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtEgresos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblAmarillo)
-                                        .addComponent(lblRojo))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtAmarillo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblVerde)
-                                .addGap(24, 24, 24)
-                                .addComponent(txtVerde, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(btnMenu)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTipoE, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTipoV, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTipoA, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(120, 120, 120))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(lblTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lblTitulo)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblVerde)
-                            .addComponent(txtVerde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtTipoV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAmarillo)
-                            .addComponent(txtAmarillo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTipoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblRojo)
-                            .addComponent(txtRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(txtTipoR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtTipoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtEgresos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(btnMenu)
-                .addContainerGap())
-        );
+        btnActivos.setText("Modificar consultorios activos");
+        btnActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActivosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 490, -1, -1));
+
+        btnEstado.setText("Mostrar estado consultorios");
+        btnEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, -1));
+
+        lblR.setText("Total de pacientes Rojos:");
+        getContentPane().add(lblR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        lblRojos.setText("0");
+        getContentPane().add(lblRojos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
+
+        lblV.setText("Total de pacientes Verdes:");
+        getContentPane().add(lblV, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        lblVerdes.setText("0");
+        getContentPane().add(lblVerdes, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 70, 10, -1));
+
+        lblA.setText("Total de pacientes Amarillos:");
+        getContentPane().add(lblA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        lblAmarillos.setText("0");
+        getContentPane().add(lblAmarillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+
+        gf.setText("Promedio Tiempo Espera:");
+        getContentPane().add(gf, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
+
+        gf1.setText("Promedio Tiempo Espera:");
+        getContentPane().add(gf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
+
+        gf2.setText("Promedio Tiempo Espera:");
+        getContentPane().add(gf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+
+        lblPV.setText("0");
+        getContentPane().add(lblPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+
+        lblPR.setText("0");
+        getContentPane().add(lblPR, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+
+        gf3.setText("Promedio Tiempo Espera:");
+        getContentPane().add(gf3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+
+        lblPA.setText("0");
+        getContentPane().add(lblPA, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTipoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoAActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivosActionPerformed
+         ModificarActivos activos = new ModificarActivos();
+        activos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnActivosActionPerformed
+
+    private void btnEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadoActionPerformed
+        MostrarEstado estado = new MostrarEstado();
+        estado.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnEstadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,23 +207,30 @@ public class Administracion extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActivos;
+    private javax.swing.JButton btnEstado;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JLabel gf;
+    private javax.swing.JLabel gf1;
+    private javax.swing.JLabel gf2;
+    private javax.swing.JLabel gf3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblA;
     private javax.swing.JLabel lblAmarillo;
+    private javax.swing.JLabel lblAmarillos;
+    private javax.swing.JLabel lblPA;
+    private javax.swing.JLabel lblPR;
+    private javax.swing.JLabel lblPV;
+    private javax.swing.JLabel lblR;
     private javax.swing.JLabel lblRojo;
+    private javax.swing.JLabel lblRojos;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblV;
     private javax.swing.JLabel lblVerde;
-    private javax.swing.JTextField txtAmarillo;
-    private javax.swing.JTextField txtEgresos;
-    private javax.swing.JTextField txtRojo;
-    private javax.swing.JTextField txtTipoA;
-    private javax.swing.JTextField txtTipoE;
-    private javax.swing.JTextField txtTipoR;
-    private javax.swing.JTextField txtTipoV;
-    private javax.swing.JTextField txtVerde;
+    private javax.swing.JLabel lblVerdes;
     // End of variables declaration//GEN-END:variables
 }
