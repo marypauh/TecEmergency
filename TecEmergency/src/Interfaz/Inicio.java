@@ -33,9 +33,10 @@ public class Inicio extends javax.swing.JFrame {
         btnEgresos = new javax.swing.JButton();
         btnUrgencias = new javax.swing.JButton();
         btnEmergencias = new javax.swing.JButton();
-        btnAdministrador = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        btnAdministrador = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -86,6 +87,14 @@ public class Inicio extends javax.swing.JFrame {
         });
         getContentPane().add(btnEmergencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, -1));
 
+        lblFondo.setBackground(new java.awt.Color(255, 255, 255));
+        lblFondo.setForeground(new java.awt.Color(255, 255, 255));
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 360, 280));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         btnAdministrador.setBackground(new java.awt.Color(204, 0, 0));
         btnAdministrador.setForeground(new java.awt.Color(255, 255, 255));
         btnAdministrador.setText("Administrador");
@@ -94,14 +103,18 @@ public class Inicio extends javax.swing.JFrame {
                 btnAdministradorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
+        jPanel1.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
 
-        lblFondo.setBackground(new java.awt.Color(255, 255, 255));
-        lblFondo.setForeground(new java.awt.Color(255, 255, 255));
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 360, 280));
+        jButton1.setBackground(new java.awt.Color(204, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Gestión de Consultorios");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 480));
 
         pack();
@@ -115,6 +128,7 @@ public class Inicio extends javax.swing.JFrame {
     private void btnUrgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUrgenciasActionPerformed
         Urgencias urgencia = new Urgencias();
         urgencia.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnUrgenciasActionPerformed
 
     private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
@@ -128,7 +142,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEgresosActionPerformed
 
     private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
-        // TODO add your handling code here:
+        Administracion adm = new Administracion();
+        adm.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAdministradorActionPerformed
 
     private void btnEmergenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmergenciasActionPerformed
@@ -136,6 +152,12 @@ public class Inicio extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnEmergenciasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Gestion gestion = new Gestion();
+        gestion.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +170,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnEmergencias;
     private javax.swing.JButton btnIngresos;
     private javax.swing.JButton btnUrgencias;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFondo;
     // End of variables declaration//GEN-END:variables

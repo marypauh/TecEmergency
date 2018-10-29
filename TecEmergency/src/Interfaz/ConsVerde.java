@@ -20,7 +20,6 @@ public class ConsVerde extends javax.swing.JFrame {
     
     public ConsVerde() {
         initComponents();
-        this.setLocationRelativeTo(null);
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");

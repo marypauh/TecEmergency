@@ -19,7 +19,6 @@ public class ConsAmarillo extends javax.swing.JFrame {
     
     public ConsAmarillo() {
         initComponents();
-        this.setLocationRelativeTo(null);
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
@@ -51,7 +50,6 @@ public class ConsAmarillo extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_amarillos = new javax.swing.JTable();
-        btnMenu = new javax.swing.JButton();
         btnAtender = new javax.swing.JButton();
         btnLiberarAtender = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -74,13 +72,6 @@ public class ConsAmarillo extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tabla_amarillos);
-
-        btnMenu.setText("Menú");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
 
         btnAtender.setText("Atender");
         btnAtender.addActionListener(new java.awt.event.ActionListener() {
@@ -111,10 +102,8 @@ public class ConsAmarillo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAtender)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLiberarAtender)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMenu)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(btnLiberarAtender)))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
@@ -131,20 +120,12 @@ public class ConsAmarillo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtender)
                     .addComponent(btnLiberarAtender)
-                    .addComponent(jLabel1)
-                    .addComponent(btnMenu))
+                    .addComponent(jLabel1))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Inicio menu = new Inicio();
-        menu.setVisible(true);
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnLiberarAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarAtenderActionPerformed
         DefaultTableModel model = (DefaultTableModel)tabla_amarillos.getModel();
@@ -193,7 +174,6 @@ public class ConsAmarillo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtender;
     private javax.swing.JButton btnLiberarAtender;
-    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
