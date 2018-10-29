@@ -151,15 +151,15 @@ public class ConsAmarillo extends javax.swing.JFrame {
         int indice = tabla_amarillos.getSelectedRow();//para obtener la fila seleccionada
         indice++; //aumentamos en 1 por que el arreglo empieza en 0
         Pacientes sigPaciente = ServicioEmergencia.Filas.filaAmarilla.nextPaciente();
-        if (sigPaciente == null){//falta ver como validar
+        Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getPacienteAtendiendo();
+            ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
+            JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
+        if (sigPaciente == null) {//falta ver como validar
             ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Libre");
             JOptionPane.showMessageDialog(null, "No hay más pacientes por atender");
         }else{
             //hacer hora salida
             //duracion
-            Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getPacienteAtendiendo();
-            ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
-            JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
             ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].atenderSigPaciente(sigPaciente);
             ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Ocupado");
             JOptionPane.showMessageDialog(null, "Atendiendo paciente " + sigPaciente.getFicha() + "en consultorio #" + indice );

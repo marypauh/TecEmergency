@@ -163,14 +163,8 @@ public class Egresos extends javax.swing.JFrame {
         int indice = tabla_egresos.getSelectedRow();//para obtener la fila seleccionada
         indice++;
         Pacientes pacienteAlta = ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].getPacienteAtendiendo();
-        if (pacienteAlta == null){//falta ver como validar
-            JOptionPane.showMessageDialog(null, "No hay pacientes en ese puesto de atención");
-        }else{
-            Pacientes paciente = ServicioEmergencia.Filas.filaEgresos.nextPaciente();
-            ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].atenderSigPaciente(paciente);
-            ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Ocupado");
-            JOptionPane.showMessageDialog(null, "Encuesta de servicio para le paciente " + pacienteAlta.getFicha());
-        }
+        ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Ocupado");
+        JOptionPane.showMessageDialog(null, "Encuesta de servicio para le paciente " + pacienteAlta.getFicha());
         actualizarTabla();
     }//GEN-LAST:event_btnReleaseActionPerformed
 
