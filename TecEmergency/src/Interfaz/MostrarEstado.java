@@ -99,35 +99,28 @@ public class MostrarEstado extends javax.swing.JFrame {
             txtFichasR.setText(Ingresos.totalR);
         }
         
-        Pacientes pacienteR = ServicioEmergencia.Filas.filaRoja.nextPaciente();
-        Pacientes pacienteA = ServicioEmergencia.Filas.filaAmarilla.nextPaciente();
-        Pacientes pacienteV = ServicioEmergencia.Filas.filaVerde.nextPaciente();
-        Pacientes pacienteE = ServicioEmergencia.Filas.filaEgresos.nextPaciente();
-        if ((pacienteR == null)){
+        if ((ServicioEmergencia.Filas.filaRoja.nextFichaPaciente() == null)){
             lblSR.setText("No hay más pacientes por atender");
         } else {
-            lblSR.setText(pacienteR.getFicha());
+            lblSR.setText(ServicioEmergencia.Filas.filaRoja.nextFichaPaciente());
         }
-        if (pacienteA == null){
+        if (ServicioEmergencia.Filas.filaAmarilla.nextFichaPaciente() == null){
             lblSA.setText("No hay más pacientes por atender");
         } else {
-            lblSA.setText(pacienteA.getFicha());
+            lblSA.setText(ServicioEmergencia.Filas.filaAmarilla.nextFichaPaciente());
         }
-        if (pacienteV == null) {
+        if (ServicioEmergencia.Filas.filaVerde.nextFichaPaciente() == null) {
             lblSV.setText("No hay más pacientes por atender");
         } else {
-            lblSV.setText(pacienteV.getFicha());
+            lblSV.setText(ServicioEmergencia.Filas.filaVerde.nextFichaPaciente());
         }
-        if (pacienteE == null) {
+        
+        if ( ServicioEmergencia.Filas.filaEgresos.nextFichaPaciente() == null) {
             lblSE.setText("No hay más pacientes por atender");
         } else {
-            lblSE.setText(pacienteE.getFicha());
-        }
+            lblSE.setText(ServicioEmergencia.Filas.filaVerde.nextFichaPaciente());
         
-        
-        
-        
-        
+    }
     }
 
     /**
@@ -294,6 +287,11 @@ public class MostrarEstado extends javax.swing.JFrame {
 
         txtFichasA.setEditable(false);
         txtFichasA.setText("No hay");
+        txtFichasA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFichasAActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtFichasA, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, 380, -1));
 
         jLabel15.setText("Fichas Amarillas");
@@ -330,6 +328,10 @@ public class MostrarEstado extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtFichasAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFichasAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFichasAActionPerformed
 
     /**
      * @param args the command line arguments

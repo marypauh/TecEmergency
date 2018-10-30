@@ -40,6 +40,14 @@ public class FilaPacientes {
         }
     }
     
+    public String nextFichaPaciente(){
+        if ("HEAP".equals(tipoDeFila)){
+            return heap.getSiguienteFicha();
+        }else{
+            return null;//revisar si retorna el paceinte correcto
+        }
+    }
+    
         public boolean  isEmpty(){
         if ("HEAP".equals(tipoDeFila)){
             if (heap.currentHeapSize == 0){

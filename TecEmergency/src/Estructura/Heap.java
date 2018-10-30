@@ -52,6 +52,13 @@ public class Heap {
         hundir (1);
         return paciente;
         }
+    public String getSiguienteFicha(){
+        if (this.isEmpty()){//esto debe mostrarse en un show dialog
+            return null;
+        }
+        Pacientes paciente = heap[1];
+        return paciente.getFicha();
+    }
     
     private void hundir (int espacioLibre) {
         int hijo;
