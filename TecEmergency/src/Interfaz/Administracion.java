@@ -73,9 +73,6 @@ public class Administracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblVerde = new javax.swing.JLabel();
-        lblAmarillo = new javax.swing.JLabel();
-        lblRojo = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblR = new javax.swing.JLabel();
@@ -92,23 +89,14 @@ public class Administracion extends javax.swing.JFrame {
         gf3 = new javax.swing.JLabel();
         lblPA = new javax.swing.JLabel();
         lblPE = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnActivos = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         btnEstado = new javax.swing.JButton();
-        btnActivos = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblVerde.setText("Consultorios Verdes:");
-        getContentPane().add(lblVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, 40));
-
-        lblAmarillo.setText("Consultorios Amarillos:");
-        getContentPane().add(lblAmarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
-
-        lblRojo.setText("Consultorios Rojos:");
-        getContentPane().add(lblRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
 
         lblTitulo.setText("Administración");
         getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
@@ -158,25 +146,9 @@ public class Administracion extends javax.swing.JFrame {
         lblPE.setText("0");
         getContentPane().add(lblPE, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
-        btnMenu.setBackground(new java.awt.Color(204, 0, 0));
-        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
-        btnMenu.setText("Menu");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
-
-        btnEstado.setBackground(new java.awt.Color(204, 0, 0));
-        btnEstado.setForeground(new java.awt.Color(255, 255, 255));
-        btnEstado.setText("Mostrar estado consultorios");
-        btnEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnActivos.setBackground(new java.awt.Color(204, 0, 0));
         btnActivos.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,12 +158,29 @@ public class Administracion extends javax.swing.JFrame {
                 btnActivosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
+        jPanel1.add(btnActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 580));
+        btnMenu.setBackground(new java.awt.Color(204, 0, 0));
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
+
+        btnEstado.setBackground(new java.awt.Color(204, 0, 0));
+        btnEstado.setForeground(new java.awt.Color(255, 255, 255));
+        btnEstado.setText("Mostrar estado consultorios");
+        btnEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,18 +219,15 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblA;
-    private javax.swing.JLabel lblAmarillo;
     private javax.swing.JLabel lblAmarillos;
     private javax.swing.JLabel lblPA;
     private javax.swing.JLabel lblPE;
     private javax.swing.JLabel lblPR;
     private javax.swing.JLabel lblPV;
     private javax.swing.JLabel lblR;
-    private javax.swing.JLabel lblRojo;
     private javax.swing.JLabel lblRojos;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblV;
-    private javax.swing.JLabel lblVerde;
     private javax.swing.JLabel lblVerdes;
     // End of variables declaration//GEN-END:variables
 }

@@ -37,11 +37,11 @@ public class ModificarActivos extends javax.swing.JFrame {
         btnContinuar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         lbl2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtVerdes = new javax.swing.JTextField();
         txtRojos = new javax.swing.JTextField();
         txtEgresos = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -81,15 +81,15 @@ public class ModificarActivos extends javax.swing.JFrame {
         lbl2.setText("Egresos");
         getContentPane().add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 186, -1, -1));
 
-        jLabel1.setText("Consultorios/Puestos de atención que quedarán activos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 16, -1, -1));
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(txtVerdes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 61, -1));
         jPanel1.add(txtRojos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 60, -1));
         jPanel1.add(txtEgresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 52, -1));
+
+        jLabel1.setText("Consultorios/Puestos de atención que quedarán activos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 270));
 
