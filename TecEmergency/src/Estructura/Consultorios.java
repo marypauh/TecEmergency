@@ -27,6 +27,9 @@ public class Consultorios {
         estado = "Libre";
         activo = "Activo";
     }
+    public void aumentarAtendidos(){
+    cantPacientesAtendidos++;
+    }
 
     public String getEstado() {
         return estado;

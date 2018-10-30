@@ -143,6 +143,7 @@ public class ConsAmarillo extends javax.swing.JFrame {
         if (ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getEstado() == "Ocupado"){
             Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].getPacienteAtendiendo();
             ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].aumentarAtendidos();
             JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
             if (sigPaciente == null) {//falta ver como validar
                 ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[indice].setEstado("Libre");

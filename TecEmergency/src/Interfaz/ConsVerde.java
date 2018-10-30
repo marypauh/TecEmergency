@@ -216,6 +216,7 @@ public class ConsVerde extends javax.swing.JFrame {
         if (ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].getEstado() == "Ocupado"){
             Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].getPacienteAtendiendo();
             ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
+            ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].aumentarAtendidos();
             JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
             if (sigPaciente == null) {//falta ver como validar
                 ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[indice].setEstado("Libre");

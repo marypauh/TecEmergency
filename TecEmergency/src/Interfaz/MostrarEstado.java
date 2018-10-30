@@ -31,9 +31,11 @@ public class MostrarEstado extends javax.swing.JFrame {
         modelo.addColumn("Numero del consultorio");
         modelo.addColumn("Condicion del consultorio");
         modelo.addColumn("Activo o inactivo");
+        modelo.addColumn("Cant Pacientes Atendidos");
         for(int i = 1;i<=datoVerde;i++){
             modelo.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getEstado(), 
-            ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getActivo()});
+            ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getActivo(),
+             ServicioEmergencia.ServicioConsultorios.consultoriosVerdes.getConsultorios()[i].getCantPacientesAtendidos()});
         }
         tableVerdes.setModel(modelo);
         
@@ -41,9 +43,11 @@ public class MostrarEstado extends javax.swing.JFrame {
         modelo1.addColumn("Numero del consultorio");
         modelo1.addColumn("Condicion del consultorio");
         modelo1.addColumn("Activo o inactivo");
+        modelo1.addColumn("Cantidad de Pacientes Atendidos");
         for(int i = 1;i<=datoAmarillo;i++){
             modelo1.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getEstado(), 
-            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getActivo()});
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getActivo(),
+            ServicioEmergencia.ServicioConsultorios.consultoriosAmarillos.getConsultorios()[i].getCantPacientesAtendidos()});
         }
         tableAmarillos.setModel(modelo1);
         
@@ -51,9 +55,11 @@ public class MostrarEstado extends javax.swing.JFrame {
         modelo2.addColumn("Numero del consultorio");
         modelo2.addColumn("Condicion del consultorio");
         modelo2.addColumn("Activo o inactivo");
+        modelo2.addColumn("Cantidad de Pacientes Atendidos");
         for(int i = 1;i<=datoRojo;i++){
             modelo2.addRow(new Object[]{i, ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getEstado(), 
-            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getActivo()});
+            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getActivo(),
+            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[i].getCantPacientesAtendidos()});
         }
         tableRojos.setModel(modelo2);
         

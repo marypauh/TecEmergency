@@ -196,6 +196,7 @@ public class ConsRojo extends javax.swing.JFrame {
         if (ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getEstado() == "Ocupado"){
             Pacientes pacienteEgresos = ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].getPacienteAtendiendo();
             ServicioEmergencia.Filas.filaEgresos.insertPaciente(pacienteEgresos);
+            ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].aumentarAtendidos();
             JOptionPane.showMessageDialog(null, "Paciente " + pacienteEgresos.getFicha() + "ha pasado a la fila de Egresos");
             if (sigPaciente == null) {//falta ver como validar
                 ServicioEmergencia.ServicioConsultorios.consultoriosRojos.getConsultorios()[indice].setEstado("Libre");
