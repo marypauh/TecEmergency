@@ -87,6 +87,7 @@ public class ConsAmarillo extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 75, 509, 343));
 
         btnAtender.setBackground(new java.awt.Color(204, 0, 0));
+        btnAtender.setForeground(new java.awt.Color(255, 255, 255));
         btnAtender.setText("Atender");
         btnAtender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +97,7 @@ public class ConsAmarillo extends javax.swing.JFrame {
         getContentPane().add(btnAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 434, -1, -1));
 
         btnLiberarAtender.setBackground(new java.awt.Color(204, 0, 0));
+        btnLiberarAtender.setForeground(new java.awt.Color(255, 255, 255));
         btnLiberarAtender.setText("Liberar y Antender");
         btnLiberarAtender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +110,7 @@ public class ConsAmarillo extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 438, -1, -1));
 
         Salir.setBackground(new java.awt.Color(204, 0, 0));
+        Salir.setForeground(new java.awt.Color(255, 255, 255));
         Salir.setText("Cerrar");
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
