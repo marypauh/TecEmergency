@@ -18,6 +18,7 @@ public class ModificarActivos extends javax.swing.JFrame {
      */
     public ModificarActivos() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,30 +33,42 @@ public class ModificarActivos extends javax.swing.JFrame {
         lblVerde = new javax.swing.JLabel();
         lbl = new javax.swing.JLabel();
         lbl1 = new javax.swing.JLabel();
-        txtVerdes = new javax.swing.JTextField();
         txtAmarillos = new javax.swing.JTextField();
-        txtRojos = new javax.swing.JTextField();
         btnContinuar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtVerdes = new javax.swing.JTextField();
+        txtRojos = new javax.swing.JTextField();
         txtEgresos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblVerde.setText("Verdes");
+        getContentPane().add(lblVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 63, -1, -1));
 
         lbl.setText("Amarillos");
+        getContentPane().add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 98, -1, -1));
 
         lbl1.setText("Rojos");
+        getContentPane().add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 142, -1, -1));
+        getContentPane().add(txtAmarillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 95, 57, -1));
 
+        btnContinuar.setBackground(new java.awt.Color(204, 0, 0));
+        btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 225, -1, -1));
 
+        btnMenu.setBackground(new java.awt.Color(204, 0, 0));
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setMnemonic('M');
         btnMenu.setText("Menu");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -63,77 +76,22 @@ public class ModificarActivos extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Consultorios/Puestos de atención que quedarán activos");
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 225, -1, -1));
 
         lbl2.setText("Egresos");
+        getContentPane().add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 186, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(89, 89, 89)
-                                .addComponent(btnContinuar)
-                                .addGap(34, 34, 34)
-                                .addComponent(btnMenu))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAmarillos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblVerde)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtVerdes, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(lbl2)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtEgresos))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(lbl1)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtRojos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVerde)
-                    .addComponent(txtVerdes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl)
-                    .addComponent(txtAmarillos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl1)
-                    .addComponent(txtRojos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl2)
-                    .addComponent(txtEgresos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnContinuar)
-                    .addComponent(btnMenu))
-                .addContainerGap())
-        );
+        jLabel1.setText("Consultorios/Puestos de atención que quedarán activos");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 16, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(txtVerdes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 61, -1));
+        jPanel1.add(txtRojos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 60, -1));
+        jPanel1.add(txtEgresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 52, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,6 +145,7 @@ public class ModificarActivos extends javax.swing.JFrame {
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;

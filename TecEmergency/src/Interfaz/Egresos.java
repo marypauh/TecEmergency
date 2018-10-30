@@ -15,13 +15,16 @@ import java.util.Random;
  * @author marip
  */
 public class Egresos extends javax.swing.JFrame {
-    
+    public static double promedioE;
+    public static int contadorE;
     int dato = ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getCantConsultoriosActivos();
 
     /**
      * Creates new form Egresos
      */
     public Egresos() {
+        contadorE = 0;
+        promedioE = 0;
        initComponents();
         this.setLocationRelativeTo(null);
         DefaultTableModel modelo = new DefaultTableModel();
@@ -54,14 +57,19 @@ public class Egresos extends javax.swing.JFrame {
         lblEgresos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_egresos = new javax.swing.JTable();
-        btnRelease = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         btnMenu = new javax.swing.JButton();
+        btnRelease = new javax.swing.JButton();
         btnAtender = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblEgresos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblEgresos.setForeground(new java.awt.Color(255, 255, 255));
         lblEgresos.setText("Egresos");
+        getContentPane().add(lblEgresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 35, -1, -1));
 
         tabla_egresos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,63 +84,42 @@ public class Egresos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_egresos);
 
-        btnRelease.setText("Dar de alta");
-        btnRelease.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReleaseActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 72, 451, 347));
 
+        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMenu.setBackground(new java.awt.Color(255, 255, 255));
+        btnMenu.setForeground(new java.awt.Color(153, 0, 0));
         btnMenu.setText("Menu");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, -1));
 
+        btnRelease.setBackground(new java.awt.Color(255, 255, 255));
+        btnRelease.setForeground(new java.awt.Color(153, 0, 0));
+        btnRelease.setText("Dar de alta");
+        btnRelease.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReleaseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRelease, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, -1, -1));
+
+        btnAtender.setBackground(new java.awt.Color(255, 255, 255));
+        btnAtender.setForeground(new java.awt.Color(153, 0, 0));
         btnAtender.setText("Atender ");
         btnAtender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtenderActionPerformed(evt);
             }
         });
+        jPanel1.add(btnAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(234, 234, 234)
-                            .addComponent(lblEgresos))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(btnAtender)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRelease)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnMenu)))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblEgresos)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRelease)
-                    .addComponent(btnMenu)
-                    .addComponent(btnAtender))
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,9 +131,7 @@ public class Egresos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
-        double random = (Math.random() * (ServicioEmergencia.Filas.maxEgresos - ServicioEmergencia.Filas.minEgresos) 
-                + ServicioEmergencia.Filas.minEgresos);
-        
+
         DefaultTableModel model = (DefaultTableModel)tabla_egresos.getModel();
         int indice = tabla_egresos.getSelectedRow();//para obtener la fila seleccionada
         indice++;
@@ -154,8 +139,12 @@ public class Egresos extends javax.swing.JFrame {
         if ((paciente == null) || ( ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].getEstado() == "Ocupado")){//falta ver como validar
             JOptionPane.showMessageDialog(null, "No hay más pacientes por atender o el puesto no esta libre");
         }else{
-            //hacer hora salida
-            //duracion
+            contadorE ++;
+            double random = (Math.random() * (ServicioEmergencia.Filas.maxEgresos - ServicioEmergencia.Filas.minEgresos) 
+                + ServicioEmergencia.Filas.minEgresos);
+            
+            promedioE = promedioE + random;
+            
             ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].atenderSigPaciente(paciente);
             ServicioEmergencia.ServicioConsultorios.consultoriosEgresos.getConsultorios()[indice].setEstado("Ocupado");
             JOptionPane.showMessageDialog(null, "Atendiendo paciente " + paciente.getFicha() + "en puesto #" + indice + ". Su tiempo en la fila de espera"
@@ -182,6 +171,7 @@ public class Egresos extends javax.swing.JFrame {
     private javax.swing.JButton btnAtender;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnRelease;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEgresos;
     private javax.swing.JTable tabla_egresos;

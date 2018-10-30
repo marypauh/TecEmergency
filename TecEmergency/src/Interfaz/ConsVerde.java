@@ -64,14 +64,18 @@ public class ConsVerde extends javax.swing.JFrame {
         btnAtender = new javax.swing.JButton();
         btnLiberarAtender = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(671, 150));
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitulo.setText("Consultorios Verdes");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 48, -1, -1));
 
         tabla_verdes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,77 +90,63 @@ public class ConsVerde extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_verdes);
 
-        btnMenu.setText("Menu");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 95, 480, 343));
+
+        btnMenu.setBackground(new java.awt.Color(204, 0, 0));
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Cerrar");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 456, -1, -1));
 
+        btnAtender.setBackground(new java.awt.Color(204, 0, 0));
+        btnAtender.setForeground(new java.awt.Color(255, 255, 255));
         btnAtender.setText("Atender");
         btnAtender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtenderActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 456, -1, -1));
 
+        btnLiberarAtender.setBackground(new java.awt.Color(204, 0, 0));
+        btnLiberarAtender.setForeground(new java.awt.Color(255, 255, 255));
         btnLiberarAtender.setText("Liberar y Antender");
         btnLiberarAtender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLiberarAtenderActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLiberarAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 456, -1, -1));
 
         jLabel1.setText("Seleccione el consultorio");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 460, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAtender)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLiberarAtender)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMenu))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(190, 190, 190)
-                                .addComponent(lblTitulo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 29, Short.MAX_VALUE)))
-                .addContainerGap())
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
+        jPanel1.setForeground(new java.awt.Color(204, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 586, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMenu)
-                    .addComponent(jLabel1)
-                    .addComponent(btnAtender)
-                    .addComponent(btnLiberarAtender))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 496, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Inicio menu = new Inicio();
-        menu.setVisible(true);
+
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
@@ -182,11 +172,25 @@ public class ConsVerde extends javax.swing.JFrame {
            Calendar horaEntrada = paciente.getHoraEntrada();
            System.out.println("Hora Entrada" + horaEntrada.getTime());
            
-           int hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
-               int minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
-               int segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+           int hora, minutos, segundos;
+           hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
+           
+           if (horaSalida.get(Calendar.MINUTE) < horaEntrada.get(Calendar.MINUTE)){
+               hora = hora - 1;
+             minutos = horaEntrada.get(Calendar.MINUTE) - horaSalida.get(Calendar.MINUTE);
+          
+           } else {
+               minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
+           }
+               if (horaSalida.get(Calendar.SECOND) < horaEntrada.get(Calendar.SECOND) && minutos == 1){
+                   minutos = 0;
+                   segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               } else {
+                    segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               }
                
-               System.out.println("Hora " + hora + "minutos: " + minutos + "segundos: " + segundos);
+               
+               System.out.println("Hora:" +hora+ " minutos:" +minutos+ " segundos:" +segundos);
                
               minutos = minutos + (hora*60);
            
@@ -231,11 +235,25 @@ public class ConsVerde extends javax.swing.JFrame {
            Calendar horaEntrada = pacienteEgresos.getHoraEntrada();
            System.out.println("Hora Entrada" + horaEntrada.getTime());
            
-           int hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
-               int minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
-               int segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+           int hora, minutos, segundos;
+           hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
+           
+           if (horaSalida.get(Calendar.MINUTE) < horaEntrada.get(Calendar.MINUTE)){
+               hora = hora - 1;
+             minutos = horaEntrada.get(Calendar.MINUTE) - horaSalida.get(Calendar.MINUTE);
+          
+           } else {
+               minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
+           }
+               if (horaSalida.get(Calendar.SECOND) < horaEntrada.get(Calendar.SECOND) && minutos == 1){
+                   minutos = 0;
+                   segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               } else {
+                    segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               }
                
-               System.out.println("Hora " + hora + "minutos: " + minutos + "segundos: " + segundos);
+               
+               System.out.println("Hora:" +hora+ " minutos:" +minutos+ " segundos:" +segundos);
                
               minutos = minutos + (hora*60);
            
@@ -265,6 +283,7 @@ public class ConsVerde extends javax.swing.JFrame {
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tabla_verdes;

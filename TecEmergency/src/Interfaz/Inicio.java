@@ -116,9 +116,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresosMouseClicked
 
     private void btnUrgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUrgenciasActionPerformed
-        Urgencias urgencia = new Urgencias();
-        urgencia.setVisible(true);
-        this.setVisible(false);
+        ConsVerde verde = new ConsVerde();
+        verde.setVisible(true);
+        ConsAmarillo amarillo = new ConsAmarillo();
+        amarillo.setVisible(true);
     }//GEN-LAST:event_btnUrgenciasActionPerformed
 
     private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed

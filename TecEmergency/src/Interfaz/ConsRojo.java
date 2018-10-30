@@ -64,10 +64,12 @@ public class ConsRojo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnAtender = new javax.swing.JButton();
         btnLiberarAtender = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -86,6 +88,8 @@ public class ConsRojo extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 470, 340));
 
+        btnMenu.setBackground(new java.awt.Color(204, 0, 0));
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Menú");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +105,8 @@ public class ConsRojo extends javax.swing.JFrame {
         jLabel2.setText("Seleccione el consultorio");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
 
+        btnAtender.setBackground(new java.awt.Color(204, 0, 0));
+        btnAtender.setForeground(new java.awt.Color(255, 255, 255));
         btnAtender.setText("Atender");
         btnAtender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +115,8 @@ public class ConsRojo extends javax.swing.JFrame {
         });
         getContentPane().add(btnAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, -1, -1));
 
+        btnLiberarAtender.setBackground(new java.awt.Color(204, 0, 0));
+        btnLiberarAtender.setForeground(new java.awt.Color(255, 255, 255));
         btnLiberarAtender.setText("Liberar y Antender");
         btnLiberarAtender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +124,10 @@ public class ConsRojo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLiberarAtender, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 2));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,9 +153,23 @@ public class ConsRojo extends javax.swing.JFrame {
            Calendar horaEntrada = paciente.getHoraEntrada();
            System.out.println("Hora Entrada" + horaEntrada.getTime());
            
-           int hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
-               int minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
-               int segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+            int hora, minutos, segundos;
+           hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
+           
+           if (horaSalida.get(Calendar.MINUTE) < horaEntrada.get(Calendar.MINUTE)){
+               hora = hora - 1;
+             minutos = horaEntrada.get(Calendar.MINUTE) - horaSalida.get(Calendar.MINUTE);
+          
+           } else {
+               minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
+           }
+               if (horaSalida.get(Calendar.SECOND) < horaEntrada.get(Calendar.SECOND) && minutos == 1){
+                   minutos = 0;
+                   segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               } else {
+                    segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               }
+               
                
                System.out.println("Hora " + hora + "minutos: " + minutos + "segundos: " + segundos);
                
@@ -190,11 +216,25 @@ public class ConsRojo extends javax.swing.JFrame {
            Calendar horaEntrada = pacienteEgresos.getHoraEntrada();
            System.out.println("Hora Entrada" + horaEntrada.getTime());
            
-           int hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
-               int minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
-               int segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+           int hora, minutos, segundos;
+           hora = horaSalida.get(Calendar.HOUR)- horaEntrada.get(Calendar.HOUR);
+           
+           if (horaSalida.get(Calendar.MINUTE) < horaEntrada.get(Calendar.MINUTE)){
+               hora = hora - 1;
+             minutos = horaEntrada.get(Calendar.MINUTE) - horaSalida.get(Calendar.MINUTE);
+          
+           } else {
+               minutos = horaSalida.get(Calendar.MINUTE) - horaEntrada.get(Calendar.MINUTE);
+           }
+               if (horaSalida.get(Calendar.SECOND) < horaEntrada.get(Calendar.SECOND) && minutos == 1){
+                   minutos = 0;
+                   segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               } else {
+                    segundos = horaSalida.get(Calendar.SECOND) - horaEntrada.get(Calendar.SECOND);
+               }
                
-               System.out.println("Hora " + hora + "minutos: " + minutos + "segundos: " + segundos);
+               
+               System.out.println("Hora:" +hora+ " minutos:" +minutos+ " segundos:" +segundos);
                
               minutos = minutos + (hora*60);
            
@@ -214,7 +254,9 @@ public class ConsRojo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLiberarAtenderActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        // TODO add your handling code here:
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
@@ -229,6 +271,7 @@ public class ConsRojo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_rojos;
     // End of variables declaration//GEN-END:variables

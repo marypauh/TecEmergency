@@ -36,6 +36,9 @@ public class Ingresos extends javax.swing.JFrame {
     public static int FichasV = 0;
     public static int FichasA = 0;
     public static int FichasR = 0;
+    public static String totalV;
+    public static String totalA;
+    public static String totalR;
     
     
     /**
@@ -44,6 +47,9 @@ public class Ingresos extends javax.swing.JFrame {
     public Ingresos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        totalV = "";
+        totalA = "";
+        totalR = "";
     }
 
     /**
@@ -70,8 +76,10 @@ public class Ingresos extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VERDE", "AMARILLO" }));
@@ -124,20 +132,31 @@ public class Ingresos extends javax.swing.JFrame {
             }
         });
 
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(163, 163, 163)
                 .addComponent(btnAgregar)
-                .addGap(160, 160, 160))
+                .addGap(28, 28, 28)
+                .addComponent(btnMenu)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(445, Short.MAX_VALUE)
-                .addComponent(btnAgregar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnMenu))
                 .addContainerGap())
         );
 
@@ -190,9 +209,11 @@ public class Ingresos extends javax.swing.JFrame {
             if (("VERDE").equals(color)){
                 FichasV ++;
                 ServicioEmergencia.Filas.filaVerde.insertPaciente(paciente);
+                totalV = totalV + ficha +", ";
             }if (("AMARILLO").equals(color)){
                 FichasA++;
                 ServicioEmergencia.Filas.filaAmarilla.insertPaciente(paciente);
+                totalA = totalA + " " + ficha +", ";
             }
             paciente.setFicha(ficha);
             JOptionPane.showMessageDialog(null, "El paciente ha sido ingresado exitosamente con la ficha " + ficha);
@@ -203,6 +224,7 @@ public class Ingresos extends javax.swing.JFrame {
             FichasR++;
             paciente.setFicha(ficha);
             ServicioEmergencia.Filas.filaRoja.insertPaciente(paciente);
+            totalR = totalR + ficha + ", ";
             JOptionPane.showMessageDialog(null, "Por aleatoriedad, el paciente ha pasado de " + color + " a ROJO. con la ficha " + ficha);
         }
         //ServicioEmergencia.Sendsms.sendSMS(nombre + " se le ha asignado la ficha " + ficha, telefono);
@@ -213,6 +235,12 @@ public class Ingresos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,6 +250,7 @@ public class Ingresos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboPadecimiento;
     private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDetalle;
